@@ -1,0 +1,113 @@
+[
+    {
+      "nombrelibro": "Física 2",
+      "desclibro": "Física 2: Electricidad y Magnetismo",
+      "obslibro": "Obra de ficción",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 123,
+      "displibro": 3,
+      "nombregenero": "Universitario",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Historia Antigua",
+      "desclibro": "Un viaje a través del tiempo",
+      "obslibro": "Libro de historia",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 85,
+      "displibro": 5,
+      "nombregenero": "Historia",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Reino Perdido",
+      "desclibro": "Una emocionante aventura en busca del tesoro",
+      "obslibro": "Fantasía épica",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 69,
+      "displibro": 10,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Experimento",
+      "desclibro": "Un misterioso experimento con consecuencias inesperadas",
+      "obslibro": "Ciencia ficción",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 55,
+      "displibro": 8,
+      "nombregenero": "Ciencia Ficción",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Romance en París",
+      "desclibro": "Una historia de amor en la ciudad del amor",
+      "obslibro": "Novela romántica", 
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 32,
+      "displibro": 15,
+      "nombregenero": "Romance",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Enigma del Tiempo",
+      "desclibro": "Un viaje a través de las paradojas temporales",
+      "obslibro": "Novela de misterio",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 40,
+      "displibro": 20,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Último Viaje",
+      "desclibro": "Una aventura en busca de lo desconocido",
+      "obslibro": "Aventura",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 27,
+      "displibro": 12,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Secreto del Bosque",
+      "desclibro": "Un misterio por resolver en el corazón del bosque",
+      "obslibro": "Misterio",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 18,
+      "displibro": 25,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Gremio de Magos",
+      "desclibro": "Una academia de magia y hechicería",
+      "obslibro": "Fantasía",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 33,
+      "displibro": 18,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Código Oculto",
+      "desclibro": "Un enigma por resolver en la criptografía moderna",
+      "obslibro": "Misterio",
+      "nombreautor": "henry potter6",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 25,
+      "displibro": 14,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    }
+  ]
+  

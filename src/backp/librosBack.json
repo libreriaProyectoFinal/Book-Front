@@ -1,0 +1,383 @@
+[
+    {
+      "nombrelibro": "Física 2",
+      "desclibro": "Física 2: Electricidad y Magnetismo",
+      "obslibro": "Obra de ficción",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 123,
+      "displibro": 3,
+      "nombregenero": "Universitario",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Historia Antigua",
+      "desclibro": "Un viaje a través del tiempo",
+      "obslibro": "Libro de historia",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 85,
+      "displibro": 5,
+      "nombregenero": "Historia",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Reino Perdido",
+      "desclibro": "Una emocionante aventura en busca del tesoro",
+      "obslibro": "Fantasía épica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 69,
+      "displibro": 10,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Experimento",
+      "desclibro": "Un misterioso experimento con consecuencias inesperadas",
+      "obslibro": "Ciencia ficción",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 55,
+      "displibro": 8,
+      "nombregenero": "Ciencia Ficción",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Romance en París",
+      "desclibro": "Una historia de amor en la ciudad del amor",
+      "obslibro": "Novela romántica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 32.25,
+      "displibro": 15,
+      "nombregenero": "Romance",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Enigma del Tiempo",
+      "desclibro": "Un viaje a través de las paradojas temporales",
+      "obslibro": "Novela de misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 40,
+      "displibro": 20,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Último Viaje",
+      "desclibro": "Una aventura en busca de lo desconocido",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 27,
+      "displibro": 12,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Secreto del Bosque",
+      "desclibro": "Un misterio por resolver en el corazón del bosque",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 18,
+      "displibro": 25,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Gremio de Magos",
+      "desclibro": "Una academia de magia y hechicería",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 33,
+      "displibro": 18,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Código Oculto",
+      "desclibro": "Un enigma por resolver en la criptografía moderna",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 25,
+      "displibro": 14,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Señores del Tiempo",
+      "desclibro": "Una travesía por los universos paralelos",
+      "obslibro": "Ciencia ficción",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 60,
+      "displibro": 9,
+      "nombregenero": "Ciencia Ficción",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "La Joya del Nilo",
+      "desclibro": "Una aventura en busca del tesoro perdido",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 42,
+      "displibro": 7,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Jardín de las Sombras",
+      "desclibro": "Un misterio oculto en un antiguo jardín",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 30,
+      "displibro": 11,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Hechicero y la Espada",
+      "desclibro": "Una lucha por el poder mágico supremo",
+      "obslibro": "Fantasía épica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 55.75,
+      "displibro": 13,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "La Tumba Perdida",
+      "desclibro": "Una emocionante aventura arqueológica",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 37.5,
+      "displibro": 16,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Círculo de los Magos",
+      "desclibro": "Una sociedad secreta de hechiceros",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 29.99,
+      "displibro": 12,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Archivos Secretos",
+      "desclibro": "Un caso de investigación sobrenatural",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 24.5,
+      "displibro": 15,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Legado de los Dioses",
+      "desclibro": "Una batalla épica entre dioses y mortales",
+      "obslibro": "Fantasía épica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 65.25,
+      "displibro": 10,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Código de los Templarios",
+      "desclibro": "Una búsqueda de tesoros y misterios medievales",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 28.5,
+      "displibro": 9,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Retorno del Mago",
+      "desclibro": "La continuación de una legendaria saga de fantasía",
+      "obslibro": "Fantasía épica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 48.75,
+      "displibro": 11,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Experimento II",
+      "desclibro": "Las consecuencias de un experimento fallido",
+      "obslibro": "Ciencia ficción",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 37.25,
+      "displibro": 7,
+      "nombregenero": "Ciencia Ficción",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Guardián de la Llave",
+      "desclibro": "Una búsqueda para proteger un objeto mágico",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 33.99,
+      "displibro": 6,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Círculo de Piedra",
+      "desclibro": "Un misterio antiguo con la clave para salvar el mundo",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 29.99,
+      "displibro": 12,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Magos del Aire",
+      "desclibro": "Un viaje en busca de los elementos mágicos",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 45.25,
+      "displibro": 8,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Fuego de la Venganza",
+      "desclibro": "Una historia de venganza y redención",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 36.75,
+      "displibro": 7,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Secretos del Universo",
+      "desclibro": "Una exploración de los misterios cósmicos",
+      "obslibro": "Ciencia no ficción",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 32.99,
+      "displibro": 10,
+      "nombregenero": "Ciencia",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Enigma del Oráculo",
+      "desclibro": "Un antiguo oráculo con secretos del futuro",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 22.5,
+      "displibro": 14,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Ojo de la Serpiente",
+      "desclibro": "Una búsqueda para desentrañar un antiguo mito",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 29.75,
+      "displibro": 7,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "La Profecía Perdida",
+      "desclibro": "Una antigua profecía con el destino de la humanidad",
+      "obslibro": "Fantasía épica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 55.25,
+      "displibro": 9,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Legado del Hechicero",
+      "desclibro": "La continuación de la saga de los hechiceros",
+      "obslibro": "Fantasía épica",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 45.75,
+      "displibro": 12,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Archivos Ocultos",
+      "desclibro": "Un caso sobrenatural por resolver",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 24.5,
+      "displibro": 10,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Hijos del Dragón",
+      "desclibro": "Un viaje en busca de la última estirpe de dragones",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 59.99,
+      "displibro": 8,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "La Fuerza de la Naturaleza",
+      "desclibro": "Una exploración de los fenómenos naturales",
+      "obslibro": "Ciencia no ficción",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 27.99,
+      "displibro": 13,
+      "nombregenero": "Ciencia",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Ojo del Cíclope",
+      "desclibro": "Una búsqueda para encontrar un antiguo artefacto",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 33.75,
+      "displibro": 6,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Legado Mágico",
+      "desclibro": "Una búsqueda para proteger la magia del mundo",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 44.99,
+      "displibro": 9,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "Los Archivos Sobrenaturales",
+      "desclibro": "Un caso de lo inexplicable por resolver",
+      "obslibro": "Misterio",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 26.5,
+      "displibro": 10,
+      "nombregenero": "Misterio",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "La Torre de los Magos",
+      "desclibro": "Una academia mágica en lo alto de una torre",
+      "obslibro": "Fantasía",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 31.99,
+      "displibro": 11,
+      "nombregenero": "Fantasía",
+      "esborrado": 0
+    },
+    {
+      "nombrelibro": "El Viaje del Navegante",
+      "desclibro": "Una travesía a través de los océanos desconocidos",
+      "obslibro": "Aventura",
+      "fotolibro": "https://res.cloudinary.com/dmjkjz1oa/image/upload/v1688138945/shoppieimg/lo7sse7rc5fmpg5enkna.png",
+      "preciolibro": 38.75,
+      "displibro": 7,
+      "nombregenero": "Aventura",
+      "esborrado": 0
+    }
+  ]
+  

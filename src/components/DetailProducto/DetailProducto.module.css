@@ -1,0 +1,127 @@
+.fondo {
+ margin-top: 40px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ height: 1450px;
+ height: 100%;
+}
+.producto {
+ background-image: url("https://wallpaperaccess.com/full/221443.jpg");
+ background-position: center;
+ background-size: cover;
+ width: 62%;
+ height: 55px;
+ display: flex;
+ align-items: center;
+ padding-left: 30px;
+ font-size: 25px;
+ color: aliceblue;
+ margin-bottom: 18px;
+}
+.cajaInterna {
+ display: flex;
+ justify-content: center;
+ width: 62%;
+}
+.cajaImagen {
+ width: 68%;
+}
+.cajaImagen h4 {
+ margin-top: 19px;
+ font-size: 20px;
+ width: 94%;
+ height: 250px;
+ color: rgb(109, 109, 109);
+}
+.cajaImagen h1 {
+ margin-top: 35px;
+ font-size: 23px;
+}
+.imagen {
+ width: 65%;
+ height: 90%;
+}
+.imagenPosition {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 94%;
+ height: 550px;
+}
+.linea {
+ background-color: rgb(194, 194, 194);
+ width: 94%;
+ height: 4px;
+}
+.datos {
+ border: 0.2em solid rgb(194, 194, 194);
+ border-radius: 13px;
+ width: 32%;
+ padding: 10px;
+ padding-bottom: 20px;
+}
+.datos h1 {
+ margin-left: 7px;
+ color: rgb(131, 131, 131);
+}
+.datos h2 {
+ margin-left: 7px;
+ font-weight: bold;
+ font-size: 24px;
+}
+.datos h4 {
+ margin-left: 7px;
+ margin-top: 12px;
+}
+.datos p {
+ margin-left: 7px;
+ font-size: 38px;
+}
+.propaganda {
+ margin-top: 18px;
+ background-image: url("https://pbs.twimg.com/media/FodQoPDaMAIhBRK?format=jpg&name=900x900");
+ background-position: 0px -10px;
+ background-size: cover;
+ margin-left: 14px;
+ background-color: rgb(46, 116, 247);
+ width: 93%;
+ height: 250px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 13px;
+}
+
+.productos5 {
+ margin-top: 35px;
+ margin-bottom: 45px;
+ width: 62%;
+}
+
+.agregar {
+ margin-left: 7px;
+ margin-top: 15px;
+ background-color: #ff0000;
+ border: none;
+ color: white;
+ font-size: 16px;
+ width: 96%;
+ height: 40px;
+ opacity: 1;
+ transition: 0.3s;
+ display: inline-block;
+ text-decoration: none;
+ cursor: pointer;
+ border-radius: 13px;
+}
+
+.agregar:hover {
+ background-color: #e00000;
+}
+.datos h3 {
+ margin-top: 15px;
+ margin-left: 7px;
+ font-size: 18px;
+}

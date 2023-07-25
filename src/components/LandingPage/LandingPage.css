@@ -1,0 +1,73 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para el encabezado */
+  header {
+    background-color: #f8f9fa; 
+    padding: 0px;
+  }
+  
+  header img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  header h1 {
+    margin-left: 20px;
+  }
+  
+  /* Estilos para el banner destacado */
+  .banner {
+    text-align: center;
+    padding: 40px;
+    background-color: #f0c14b;
+    color: #111; /* Color de texto */
+  }
+  
+  .banner img {
+    max-width: 100%; /* Hace que la imagen del banner se ajuste al ancho del contenedor */
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .banner p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .banner button {
+    background-color: #e6b91e; 
+    color: #111; /* Color de texto */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Añade bordes redondeados al botón */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Añade sombra al botón */
+    transition: background-color 0.3s ease; /* Agrega una transición suave en el cambio de color */
+  }
+  
+  .banner button:hover {
+    background-color: #d1a628; /* Cambia el color de fondo al pasar el cursor sobre el botón */
+  }
+  
+  /* Estilos para la sección de libros destacados y ofertas especiales (puedes agregarlos según necesites) */
+  
+  /* Estilos para el pie de página */
+  footer {
+    background-color: #f8f9fa; 
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer p {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* Estilos adicionales según necesites */
+  
+  

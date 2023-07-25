@@ -1,0 +1,155 @@
+.fondo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cajaInterna {
+  width: 50%;
+}
+.caja2 {
+  display: flex;
+  width: 100%;
+}
+.caja3 {
+  display: flex;
+  width: 100%;
+}
+.crearProducto {
+  background-image: url("https://wallpaperaccess.com/full/221443.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 25px;
+  color: aliceblue;
+}
+.nombre {
+  background-color: rgb(235, 235, 235);
+  height: 100%;
+  margin-top: 27px;
+  padding-bottom: 30px;
+  width: 100%;
+  border-left: 0.8em solid rgb(255, 0, 0);
+}
+.nombre h1 {
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 17px;
+}
+.nombre p {
+  color: rgb(97, 97, 97);
+  margin-left: 30px;
+  margin-right: 18px;
+  margin-bottom: 25px;
+}
+.imagenes {
+  margin-top: 27px;
+  width: 100%;
+  padding: 30px;
+  border-left: 0.8em solid rgb(255, 0, 0);
+  background-color: rgb(235, 235, 235);
+}
+.imagenes h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.imagenes p {
+  color: rgb(97, 97, 97);
+  margin-bottom: 25px;
+}
+.cantidad {
+  margin-top: 27px;
+  margin-right: 14px;
+  padding: 30px;
+  border-left: 0.8em solid rgb(255, 0, 0);
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+}
+.cantidad h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.categoria {
+  padding: 30px;
+  margin-top: 27px;
+  margin-left: 14px;
+  border-left: 0.8em solid rgb(255, 0, 0);
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+}
+.categoria h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.descripcion {
+  padding: 30px;
+  margin-top: 27px;
+  border-left: 0.8em solid rgb(255, 0, 0);
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+}
+.descripcion h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.descripcion p {
+  color: rgb(97, 97, 97);
+  margin-bottom: 30px;
+}
+.colores {
+  padding: 30px;
+  margin-top: 27px;
+  border-left: 0.8em solid rgb(255, 0, 0);
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+}
+.colores h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.precio {
+  padding: 30px;
+  margin-top: 27px;
+  margin-right: 14px;
+  border-left: 0.8em solid rgb(255, 0, 0);
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+  margin-bottom: 80px;
+}
+.precio h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.enviar {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: 150px;
+  margin-top: 27px;
+  margin-left: 14px;
+  width: 100%;
+}
+.sumit {
+  background-color: black;
+  color: aliceblue;
+  border-radius: 13px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.sumit {
+  background-color: red;
+  color: aliceblue;
+  border-radius: 13px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}

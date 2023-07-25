@@ -1,0 +1,76 @@
+/* home.css */
+
+/* Estilos para el contenedor principal */
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilos para los títulos y encabezados */
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Estilos para el contenedor de las cards */
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Estilos para las cards de los libros */
+  .card {
+    width: 30%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
+  .card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .card .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media queries para diseño responsive */
+  

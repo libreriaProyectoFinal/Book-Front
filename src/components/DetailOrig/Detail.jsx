@@ -1,0 +1,1 @@
+{idlibro, nombrelibro, fotolibro, preciolibro, author, edition, year, desclibro, nombregenero, pages, raiting}
