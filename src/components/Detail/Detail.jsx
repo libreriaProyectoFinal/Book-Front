@@ -1,57 +1,87 @@
 import React, { useState, useEffect }  from 'react';
 import { Contenedor, Tit, Img, Btn } from './styled.Detail.js';
 import { useParams , useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { agregaCarrito } from '../../redux/actions/actions';
+import { obtieneDetalleLibro } from '../../redux/actions/actions.js'
 import { Link } from "react-router-dom";
 import axios from 'axios';
-//const urlBack = 'http://localhost:3001';
-const urlBack = "http://190.100.208.178:3001";
+const urlBack = 'http://localhost:3001';
+//const urlBack = "http://190.100.208.178:3001";
 
 function Detail() {
+  let  { idl } = useParams();
   const [libro, setLibro] = useState({});
-  let  {idl} = useParams();
+
+  const carrito = useSelector((state) => state.carrito);
+ 
   const navigate = useNavigate();
+  const dispatch = useDispatch();  
  console.log('idl:', idl ,'-');
- let hola= axios(urlBack+`/obtenerLibroId/${idl}`);
- console.log(hola);
- useEffect(() => {
-  const obtenerDetalleLibro = async () => {
-    try {
-      const response = await axios.get(urlBack+`/obtenerLibroId/${idl}`);
-      const data = response.data;
-      if (data.idlibro) {
-        setLibro(data);
-      } else {
-        window.alert('No hay Libro con ese ID');
-        navigate(-1); // Redirigir al usuario de vuelta a la página anterior si no se encuentra el libro
-      }
-    } catch (error) {
-      window.alert('Error al obtener el detalle del libro');
-      console.error(error);
-      navigate(-1); // Redirigir al usuario de vuelta a la página anterior en caso de error
-    }
-  };
 
-  obtenerDetalleLibro();
-}, [idl, navigate]);
+ const libroDetail = useSelector( (state) => state.details );
 
-  let handleGoBack = () => { navigate(-1); };
+  // Actualiza el estado 'libro' con los datos de 'libroDetail'
+  useEffect(() => {
+   setLibro(libroDetail);
+ }, [libroDetail]); 
+
+ const { idlibro, nombrelibro, desclibro, nombreautor, preciolibro, displibro, fotolibro } = libro;
+
+  console.log('idparams', libro.idlibro);
+  console.log('nombrelibro:',libro.nombrelibro);
+  console.log('desclibro:',libro.desclibro);
+
+
+ 
+   useEffect( 
+    () =>{ dispatch ( obtieneDetalleLibro(idl) )  }, [idl] );
+
+
+  //########### EL HANDLE DE AGREGAR PRODUCTO AL CARRITO ##############
+  function handleSubmit(e) {
+
+    // console.log(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
+    //  alert(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
+     // e.preventDefault();
+     const productExists = carrito.some((libro) => libro.idlibro === idlibro);
+     if (productExists) { alert("Este producto ya está en el carrito.");
+       return; 
+     }
+
+   const librosAgregar = {
+     idlibro: idlibro,
+     imagen: fotolibro,
+     nombrelibro: nombrelibro,
+     preciolibro: preciolibro, 
+     cantidad: 1,
+     subtotalitem: (1 * preciolibro)
+   };
+
+   dispatch( agregaCarrito( librosAgregar ));
+   alert(`Agregaste el libro ${nombrelibro} a tu carrito`);
+ }
+
+
   return (
   <div>
-     <Contenedor>
-        <Btn onClick={handleGoBack}>Volver</Btn>
-        <Img src={libro.fotolibro} />
-        <Tit>id: {libro.idlibro}</Tit>
-        <Tit>Titulo: {libro.nombreautor}</Tit>
-        <Tit>Descripcion:: {libro.desclibro}</Tit>
-        <Tit>Nota Biografica {libro.nombreautor}</Tit>
-        <Tit>Precio: $ {libro.preciolibro}</Tit>
-        <Tit>Disp Stock: {libro.displibro}</Tit>
+
+     <Contenedor >
+        {/* <Btn onClick={handleGoBack}>Volver</Btn> */}
+        <Img src={fotolibro} />
+        <Tit>id: {idlibro}</Tit>
+        <Tit>Titulo: {nombrelibro}</Tit>
+        <Tit>Descripcion: {desclibro}</Tit>
+        <Tit>Nota Biografica {nombreautor}</Tit>
+        <Tit>Precio: $ {preciolibro}</Tit>
+        <Tit>Disp Stock: {displibro}</Tit>
          {/* <Tit>Temperamentos: {libro.temperament}</Tit>
         <Tit>Años de Vida: {libro.life_span}</Tit> */}
-       <button className="btn btn-primary" style={{ fontSize: '24px', padding: '15px 30px' }}>
+       <button  onClick={ () => handleSubmit() }     style={{ fontSize: '24px', padding: '15px 30px' }}>
           Agregar a carrito
        </button>
      </Contenedor>
+   
   </div>
  );
 }
