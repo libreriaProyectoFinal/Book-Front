@@ -33,7 +33,7 @@ const searchBooksByTitle = () => {
  };
  const navigateToHome = () => {
      navigate("/home");
-     window.location.reload(); // Recargar la página
+  //   window.location.reload(); // Recargar la página
 };
 
  return (
