@@ -6,8 +6,7 @@ import { agregaCarrito } from '../../redux/actions/actions';
 import { obtieneDetalleLibro } from '../../redux/actions/actions.js'
 import { Link } from "react-router-dom";
 import axios from 'axios';
-const urlBack = 'http://localhost:3001';
-//const urlBack = "http://190.100.208.178:3001";
+
 
 function Detail() {
   let  { idl } = useParams();

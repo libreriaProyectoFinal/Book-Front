@@ -6,7 +6,7 @@ import './Nav.css';
 import { librosGenero, librosPorTitulo , obtenerGeneros ,cambiarFlagNav, elGenero, elTitulo} from '../../redux/actions/actions';
 
 //const urlBack = 'http://localhost:3001';
-const urlBack = "http://190.100.208.178:3001";
+//const urlBack = "http://190.100.208.178:3001";
 
 const NavBar = () => {
  const dispatch = useDispatch();

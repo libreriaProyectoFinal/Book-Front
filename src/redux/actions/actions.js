@@ -7,6 +7,8 @@ import axios from "axios";
 const urlBack = 'http://localhost:3001';
 //const urlBack = "http://190.100.208.178:3001";
 
+//const urlBack = "https://book-back-1z1hjl144-libreriaproyectofinal.vercel.app/";
+
 
 export const obtener_Todos_Libros = (pagina, limite) => { 
     return  (dispatch) => {      
@@ -36,11 +38,17 @@ export const librosGenero = (pagina, genero, limite) => {
  return  (dispatch) => {      
     console.log('genero:',genero);
     try {
-     axios.get(urlBack+`/obtenerLibroPorGenero?pagina=${pagina}&genero=${genero}&limite=${limite}`).then((response) => {
-       dispatch({
-        type: "LIBROS_GENERO",
-        payload:{
-         paginaActual: response.data.paginaActual, librosPorPagina: response.data.limitePagina, totalLibros: response.data.totalLibros, totalPaginas: response.data.totalPaginas, libros: response.data.libros, } }) } );
+    axios.get(urlBack+`/obtenerLibrosPorGenero?pagina=${pagina}&genero=${genero}&limite=${limite}`).then((response) => {
+    dispatch({
+     type: "LIBROS_GENERO",
+      payload:{
+         paginaActual: response.data.paginaActual, 
+         librosPorPagina: response.data.limitePagina,
+         totalLibros: response.data.totalLibros, 
+         totalPaginas: response.data.totalPaginas,
+         libros: response.data.libros, 
+       }
+      }) } );
       }
     catch(error){
         console.error('Error al listar libros: ', error);
@@ -159,6 +167,8 @@ export const deleteLibroCarro = (idlibro) => {
    payload: idlibro
  };
 };
+
+
 
 export const updateCarrito = (idlibro,imagen,nombrelibro,preciolibro,cantidad,subtotalitem) => {
  return {
