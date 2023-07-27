@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import axios from "axios";
 import Modal from "react-modal";
 import s from "./Total.module.css";
-import { limpiarCarrito,reinicia_store } from '../../../redux/actions/actions.js'; 
+import { urlBack, limpiarCarrito,reinicia_store } from '../../../redux/actions/actions.js'; 
 //import { getAllCategorias, getAllProducts } from '../../../redux/actions/actions';
-
-const urlBack = 'http://localhost:3001';
+//const urlBack = 'http://localhost:3001';
 //const urlBack = 'https://commerce-back-2025.up.railway.app';
 
 Modal.setAppElement("#root");
@@ -21,46 +20,44 @@ export function showMessage(message, url) {
  );
 }
 export default function Total({ productos, sumatotal }) {
+
  const dispatch = useDispatch();
-    const [mensaje, setMensaje] = useState(""); 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [urlPago, setUrlPago] = useState("");
+      const [mensaje, setMensaje] = useState(""); 
+      const [modalIsOpen, setModalIsOpen] = useState(false);
+      const [urlPago, setUrlPago] = useState("");
 
-    const handleCompra = async () => {
-    const loginuser = "claudiodavid339@gmail.com";
-    const hashvalidacionpago = "AUN_NO";
-    const valortotaloc = sumatotal;
-    const estadooc = "pendiente";
+      const handleCompra = async () => {
 
-    const detalleocx = productos.map((producto) => ({
-      idproducto: producto.id,
-      nombreproducto: producto.nombre,
-      valorunitario: producto.valorunit,
-      cant: producto.cantidad,
-      subtotal: producto.subtotalitem.toString(),
-    }));
+     const loginuser = "claudiodavid339@gmail.com";
+     const hashvalidacionpago = "AUN_NO";
+     const valortotaloc = sumatotal;
+     const estadooc = "pendiente";
 
-    const body = { loginuser, hashvalidacionpago, valortotaloc, estadooc, detalleocx, };
+      const detalleocx = productos.map((producto) => ({
+        idlibro: producto.idlibro,
+        nombrelibro: producto.nombrelibro,
+        valorunitario: producto.preciolibro,
+        cant: producto.cantidad,
+        subtotal: producto.subtotalitem.toString(),
+      }));
+      const body = { loginuser, hashvalidacionpago, valortotaloc, estadooc, detalleocx, };
+      try {
+        const response = await axios.post(urlBack + "/generar-orden", body);
+        const urlPago = response.data.URLo;
+        setUrlPago(urlPago);
+        setModalIsOpen(true);
+       // showMessage("Orden de compra generada. Haz clic en el enlace para pagar: ", urlPago);          
+       //  console.log('body: ', body);
+       //  showMessage(" Pago realizado exitosamente.: "+ body.data+'..'); 
+       //  console.log('Respuesta: ' ,response.data, '.'); // Handle the response as needed
+       //  console.log('body: ' ,body.data, '.'); 
 
-    try {
-      const response = await axios.post(urlBack + "/generar-orden", body);
-      const urlPago = response.data.URLo;
-      setUrlPago(urlPago);
-      setModalIsOpen(true);
+       /**limpio el carro */
+       //dispatch(limpiarCarrito());
 
-   // showMessage("Orden de compra generada. Haz clic en el enlace para pagar: ", urlPago);
-      
-   //  console.log('body: ', body);
-   //  showMessage(" Pago realizado exitosamente.: "+ body.data+'..'); 
-   //  console.log('Respuesta: ' ,response.data, '.'); // Handle the response as needed
-   //  console.log('body: ' ,body.data, '.'); 
-
-   /**limpio el carro */
-   //dispatch(limpiarCarrito());
-
-    } catch (error) {       
-       console.error(error);  
-    }
+        } catch (error) {       
+           console.error(error);  
+        }
   };
   
   const reiniciaCarro= ()=> { 

@@ -3,49 +3,42 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import './Home.css'
 import Pagination from '../Paginate/Paginate';
-import { obtener_Todos_Libros } from '../../redux/actions/actions';
+import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux/actions/actions';
 import NavBar from '../Nav/Nav';
 import Cardsw from '../Cards/Cardsw';
 import Footer from './../Footer/Footer';
 
 const Home = () => {
+ const flagNav = useSelector((state) => state.flagNav);
+ const generonav =  useSelector((state) => state.generonav);
+ const titulonav =  useSelector((state) => state.titulonav);
  const dispatch = useDispatch();
- const todoLibros = useSelector((state) => state.libros);
- const [libros, setLibros] = useState([]);
- const [currentPage, setCurrentPage] = useState(1);
- const librosPorPagina = 4;
- const [totalLibros, setTotalLibros] = useState();
-
+ const libros = useSelector(state => state.libros); 
+ const librosxpag = 4;
+ 
  useEffect(() => {
-   dispatch(obtener_Todos_Libros(currentPage, librosPorPagina));
-}, [currentPage,dispatch]);
-
-useEffect(() => {
- if (todoLibros) {
-   setLibros(todoLibros.libros);
-   setTotalLibros(todoLibros.totalLibros);
- }
-}, [todoLibros]);
+    if (flagNav === "0") (dispatch(obtener_Todos_Libros(1, librosxpag)));
+    if (flagNav === "1") (dispatch(librosGenero(1,generonav,librosxpag)));
+    if (flagNav === "2") (dispatch(librosPorTitulo(1,titulonav,librosxpag)));
+}, [ flagNav, generonav,titulonav ]);
 
 const handlePageChange = (pageNumber) => {
-    console.log("pageNumber ", pageNumber);
-    setCurrentPage(pageNumber);
+   if (flagNav === "0") (dispatch(obtener_Todos_Libros(pageNumber, librosxpag)));
+   if (flagNav === "1") (dispatch(librosGenero(pageNumber,generonav,librosxpag)));
+   if (flagNav === "2") (dispatch(librosPorTitulo(pageNumber,titulonav,librosxpag)))
+
 };
 
-const indexOfLastBook = currentPage * librosPorPagina;
-const indexOfFirstBook = indexOfLastBook - librosPorPagina;
-const currentBooks = Array.isArray(libros) ? libros.slice(indexOfFirstBook, indexOfLastBook) : [];
 
  return (
  <div className="home-page">
    {/* <NavBar /> */}
    <div className="container mt-5">
      <h1>Lista de Libros</h1>
-     <Cardsw books={libros} />
+     <Cardsw books={libros.libros} />
     <Pagination
-      currentPage={currentPage} 
-      totalBooks={totalLibros} 
-      librosPorPagina={librosPorPagina}
+      libros={libros} 
+
       onPageChange={handlePageChange}
     />
    </div>   
