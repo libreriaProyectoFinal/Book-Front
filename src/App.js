@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect ,useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home.jsx';
@@ -9,13 +10,15 @@ import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFound/NotFound';
 import FormC from './components/FormIngresoC/form.jsx';
 import Detail from './components/Detail/Detail.jsx';
+import Carrito from "./components/Carrito/Carrito/Carrito";
 
 import AgregaLibro from './components/FormIngresoC/AgregarLibroForm.jsx';
+import { obtener_Todos_Libros, obtenerGeneros } from './redux/actions/actions';
 //import EditaLibro from './components/FormIngresoC/EditarLibroForm.jsx';
 
 
 document.title = "Book Club";
-const urlBack = 'http://localhost:3001';
+//const urlBack = 'http://localhost:3001';
 //const urlBack = 'http://190.100.208.178:3001';
 
 // codigo para agregar libros
@@ -49,7 +52,12 @@ const urlBack = 'http://localhost:3001';
  //enviarLibros();
 
 function App() {
-
+ const dispatch = useDispatch();
+ const [currentPage, setCurrentPage] = useState(1);
+ const librosPorPagina = 4;
+ useEffect(() => {   dispatch(obtenerGeneros()); 
+                     dispatch(obtener_Todos_Libros(1,4));
+                 }, []);
   return (
     <div className="App">
      <NavBar /> 
@@ -68,12 +76,11 @@ function App() {
         <Route path="/about" element={<h1>About</h1>} />
         <Route path="/detail/:idl"  element={<Detail />} />
         <Route path="/agregalibro" element={<AgregaLibro />} />
+        <Route path="/carrito" element={<Carrito />} />
         {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
         <Route path="/*" element={<NotFoundPage/>} />
       </Routes>
-
     </div>
   );
 }
-
 export default App;
