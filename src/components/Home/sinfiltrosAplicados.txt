@@ -1,5 +1,217 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { Box, Container, Typography, TextField, Grid, MenuItem, Button, Select, } from '@mui/material';
+import './Home.css'
+import Pagination from '../Paginate/Paginate';
+<<<<<<< HEAD
+import { obtener_Todos_Libros, obtenerGeneros, obtenerAutores, filterByOrigin, filterByGenre, filterByAuthor, orderByPrice, orderByName, } from '../../redux/actions/actions';
+=======
+import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux/actions/actions';
+import NavBar from '../Nav/Nav';
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
+import Cardsw from '../Cards/Cardsw';
+import Footer from './../Footer/Footer';
+
+const Home = () => {
+<<<<<<< HEAD
+  const dispatch = useDispatch();
+  const todoLibros = useSelector((state) => state.libros);
+  const [libros, setLibros] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const librosPorPagina = 12;
+  const [totalLibros, setTotalLibros] = useState();
+
+  const indexOfLastBook = currentPage * librosPorPagina;
+  const indexOfFirstBook = indexOfLastBook - librosPorPagina;
+  const currentBooks = Array.isArray(libros) ? libros.slice(indexOfFirstBook, indexOfLastBook) : [];
+
+  const todoGeneros = useSelector((state)=>state.genero);
+  const autores = useSelector((state)=>state.autor);
+
+  const [order, setOrder] = useState('');
+
+  
+  useEffect(() => {
+    dispatch(obtener_Todos_Libros(currentPage, librosPorPagina));
+    obtenerGeneros(dispatch);
+    obtenerAutores(dispatch);
+  }, [currentPage, dispatch]);
+  
+
+  useEffect(() => {
+    if (todoLibros && todoLibros.libros) {
+      setLibros(todoLibros.libros);
+      setTotalLibros(todoLibros.totalLibros);
+    }
+  }, [todoLibros]);
+
+  const handlePageChange = (pageNumber) => {
+    console.log("pageNumber ", pageNumber);
+    setCurrentPage(pageNumber);
+  };
+
+  // alfabeticamente
+  function handleSort(e){
+    e.preventDefault();
+    dispatch(orderByName(e.target.value));
+    setOrder(`Alphabetical ${e.target.value} order`);
+    setCurrentPage(1);
+    e.target.value= 'default';
+  }  
+
+  // precio
+  function handlePriceSort(e) {
+    e.preventDefault();
+    dispatch(orderByPrice(e.target.value)); 
+    setOrder(`Price ${e.target.value} order`);
+    setCurrentPage(1);
+    e.target.value = 'default';
+  }
+
+  // genero
+  function handleFilterGenre(e) {
+    e.preventDefault();
+    dispatch(filterByGenre(e.target.value)); 
+    setOrder(`Filtered by Gender: ${e.target.value}`);
+    e.target.value = 'default';
+  }
+
+  //autor
+  function handleFilterAuthor(e) {
+    e.preventDefault();
+    dispatch(filterByAuthor(e.target.value)); 
+    setOrder(`Filtered by Author: ${e.target.value}`);
+    e.target.value = 'default';
+  }
+
+  //base de datos y nuevos
+  function handleFilterByOrigin(e){
+    e.preventDefault();
+    dispatch(filterByOrigin(e.target.value));
+    setOrder(`Filtered by Origin: ${e.target.value}`);
+    e.target.value= 'default';
+  }
+
+  //limpiar filtros
+  function handleClearFilters() {
+      handleSort({ target: { value: 'default' } });
+      handlePriceSort({ target: { value: 'default' } });
+      handleFilterGenre({ target: { value: 'default' } });
+      handleFilterAuthor({ target: { value: 'default' } });
+      handleFilterByOrigin({ target: { value: 'default' } });
+    }
+
+
+    return (
+      <Container component="main" maxWidth="100%">
+        <Box sx={{ mt: 10 }}>
+          <Typography variant="h2" align="center" gutterBottom>
+            Lista de Libros
+          </Typography>
+        </Box>
+        <Box sx={{ display: 'flex', mb: 10}}>
+    <Box>
+      <Select sx={{ minWidth: 200, mr: 5, }} className="homeFilters" value='default' onChange={e => handleSort(e)}>
+        <MenuItem disabled value="default">Órden por nombre...</MenuItem>
+        <MenuItem value="asc">A - Z</MenuItem>
+        <MenuItem value="desc">Z - A</MenuItem>
+      </Select>
+    </Box>
+  <Box>
+    <Select sx={{ minWidth: 200, mr: 5,  }} className="homeFilters" value='default' onChange={e => handlePriceSort(e)}>
+      <MenuItem disabled value="default">Precio...</MenuItem>
+      <MenuItem value="asc">Menor a Mayor</MenuItem>
+      <MenuItem value="desc">Mayor a Menor</MenuItem>
+    </Select>
+  </Box>
+  <Box>
+    <Select sx={{ minWidth: 200, mr: 5,  }} className="homeFilters" value='default' onChange={e => handleFilterGenre(e)}>
+      <MenuItem disabled value="default">Género...</MenuItem>
+      <MenuItem value='all'>Todos</MenuItem>
+      <MenuItem value='male'>Male</MenuItem>
+      <MenuItem value='female'>Female</MenuItem>
+    </Select>
+  </Box>
+  <Box>
+    <Select sx={{ minWidth: 200, mr: 5,  }} className="homeFilters" value='default' onChange={e => handleFilterAuthor(e)}>
+      <MenuItem disabled value="default">Autor/a...</MenuItem>
+      <MenuItem value='all'>Todos/as</MenuItem>
+      <MenuItem value='author1'>Author 1</MenuItem>
+      <MenuItem value='author2'>Author 2</MenuItem>
+    </Select>
+  </Box>
+  <Box>
+    <Select sx={{ minWidth: 200, mr: 5,  }} className="homeFilters" value='default' onChange={e => handleFilterByOrigin(e)}>
+      <MenuItem disabled value="default">Origen...</MenuItem>
+      <MenuItem value="all">Todos los libros...</MenuItem>
+      <MenuItem value="originals">Originales...</MenuItem>
+      <MenuItem value="created by User">Creados Por Usuario...</MenuItem>
+    </Select>
+    </Box>
+    <Box>
+      <Button sx={{ minWidth: 200, }} className="clearFilters" onClick={handleClearFilters}>Clear Filters</Button>
+    </Box>
+  </Box>
+
+        <Cardsw books={libros} />
+        <Pagination
+          currentPage={currentPage}
+          totalBooks={totalLibros}
+          librosPorPagina={librosPorPagina}
+          onPageChange={handlePageChange}
+        />
+        <Footer />
+      </Container>
+    );
+=======
+ const flagNav = useSelector((state) => state.flagNav);
+ const generonav =  useSelector((state) => state.generonav);
+ const titulonav =  useSelector((state) => state.titulonav);
+ const dispatch = useDispatch();
+ const libros = useSelector(state => state.libros); 
+ const librosxpag = 4;
+ 
+ useEffect(() => {
+    if (flagNav === "0") (dispatch(obtener_Todos_Libros(1, librosxpag)));
+    if (flagNav === "1") (dispatch(librosGenero(1,generonav,librosxpag)));
+    if (flagNav === "2") (dispatch(librosPorTitulo(1,titulonav,librosxpag)));
+}, [ flagNav, generonav,titulonav ]);
+
+const handlePageChange = (pageNumber) => {
+   if (flagNav === "0") (dispatch(obtener_Todos_Libros(pageNumber, librosxpag)));
+   if (flagNav === "1") (dispatch(librosGenero(pageNumber,generonav,librosxpag)));
+   if (flagNav === "2") (dispatch(librosPorTitulo(pageNumber,titulonav,librosxpag)))
+
+};
+
+
+ return (
+ <div className="home-page">
+   {/* <NavBar /> */}
+   <div className="container mt-5">
+     <h1>Lista de Libros</h1>
+     <Cardsw books={libros.libros} />
+    <Pagination
+      libros={libros} 
+
+      onPageChange={handlePageChange}
+    />
+   </div>   
+   <Footer />
+ </div>
+);
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
+};
+
+export default Home;
+
+
+-------------------------------------------------------
+
+
+
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Select, Container, Typography, Autocomplete, TextField, Grid, FormControl, OutlinedInput, MenuItem,   } from '@mui/material';
 import './Home.css'
 import Pagination from '../Paginate/Paginate';
