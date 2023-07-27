@@ -213,7 +213,94 @@ export const elTitulo = (nuevoValor) => {
  };
   
 
+ export const librosAutor = (pagina, autor, limite) => {
+  return (dispatch) => {
+    console.log('autor:', autor);
+    try {
+      axios.get(urlBack + `/obtenerLibroPorAutor?pagina=${pagina}&autor=${autor}&limite=${limite}`)
+        .then((response) => {
+          dispatch({
+            type: "LIBROS_AUTOR",
+            payload: {
+              paginaActual: response.data.paginaActual,
+              librosPorPagina: response.data.limitePagina,
+              totalLibros: response.data.totalLibros,
+              totalPaginas: response.data.totalPaginas,
+              libros: response.data.libros,
+            }
+          });
+        })
+        .catch((error) => {
+          console.error('Error al listar libros: ', error);
+          toast.error('Error al listar libros.', { position: toast.POSITION.TOP_RIGHT });
+        });
+    } catch (error) {
+      console.error('Error al listar libros: ', error);
+      toast.error('Error al listar libros.', { position: toast.POSITION.TOP_RIGHT });
+    }
+  };
+};
+
+
+export const obtenerAutores = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(urlBack + `/obtenerAutores`);
+      const data = response.data;
+      console.log('data autores: ', data, ' .');
+      return dispatch({
+        type: "OBTIENE_AUTORES",
+        payload: data,
+      });
+    } catch (error) {
+      console.error('Error al obtener autores: ', error);
+      toast.error('Error al obtener autores.', { position: toast.POSITION.TOP_RIGHT });
+    }
+  };
+};
+
+export function filterByOrigin(payload){
+  return{
+      type: 'FILTER_BY_ORIGIN',
+      payload
+  }
+}
+
+export function orderByName(payload){
+  return{
+      type: 'ORDER_BY_NAME',
+      payload
+  }
+}
+
+export function filterByGenre(payload){
+  return {
+      type: 'FILTER_BY_GENRE',
+      payload
+  }
+}
+
+export function filterByAuthor(payload){
+  return {
+      type: 'FILTER_BY_AUTHOR',
+      payload
+  }
+}
+
+export function orderByPrice(payload){
+  return{
+      type: 'ORDER_BY_PRICE',
+      payload
+  }
+}
+
+
+
+
 /*
+
+
+
 
 export function getDetail(id) {
   return async function (dispatch) {

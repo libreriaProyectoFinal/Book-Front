@@ -12,7 +12,9 @@ const initialState = {
     LibroFiltrado: [],
     LibroOrdenado: [],
     PaginaActual: 1,
-    localizaciones: []
+    localizaciones: [],
+
+    librosAutor: [],
 }
 /* 
 
@@ -48,6 +50,11 @@ const rootReducer = (state = initialState,{ type, payload }) => {
               libros: payload,      
           }
  
+          case "LIBROS_AUTOR":
+            return {
+                ...state,
+                libros: payload,      
+            }
 
 
         case types.OBTENER_LIBRO_POR_ID:
@@ -81,7 +88,10 @@ const rootReducer = (state = initialState,{ type, payload }) => {
                 libros: state.librosOriginal
             }
         case types.ORDENAR_LIBROS:
-            
+            return {
+                ...state,
+                libros: state.librosOriginal
+            }
         case types.QUITAR_ORDEN:
             return {
                 ...state,
