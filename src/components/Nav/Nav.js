@@ -26,11 +26,13 @@ const cambiarTitulo  = (param)     => { dispatch(elTitulo(param)); };
 const searchBooksByTitle = (buscaTitulo) => {
     cambiarFlag1("2");
     cambiarTitulo(buscaTitulo);
+    navigate("/home");
 };
 
 const fetchBooksByGenre = (nombregenero) => {
     cambiarFlag1("1");
     cambiarGenero(nombregenero);
+    navigate("/home");
  };
 
  const navigateToHome = () => {
