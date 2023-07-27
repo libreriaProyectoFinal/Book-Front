@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Carrito = () => {
 
+ 
   let elCarrito = useSelector((state) => state.carrito);
   const [productos, setProductos] = useState(elCarrito);
   const [sumaTotal, setSumaTotal] = useState(0);

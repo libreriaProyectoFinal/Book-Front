@@ -4,7 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { json, useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-const urlBack = 'http://localhost:3001';
+
+export const urlBack = 'http://localhost:3001';
 //const urlBack = "http://190.100.208.178:3001";
 
 //const urlBack = "https://book-back-1z1hjl144-libreriaproyectofinal.vercel.app/";

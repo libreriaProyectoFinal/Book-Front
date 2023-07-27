@@ -40,9 +40,6 @@ function Detail() {
   //########### EL HANDLE DE AGREGAR PRODUCTO AL CARRITO ##############
   function handleSubmit(e) {
 
-    // console.log(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
-    //  alert(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
-     // e.preventDefault();
      const productExists = carrito.some((libro) => libro.idlibro === idlibro);
      if (productExists) { alert("Este producto ya está en el carrito.");
        return; 
@@ -58,6 +55,7 @@ function Detail() {
    };
 
    dispatch( agregaCarrito( librosAgregar ));
+   
    alert(`Agregaste el libro ${nombrelibro} a tu carrito`);
  }
 
