@@ -18,7 +18,7 @@ import { obtener_Todos_Libros, obtenerGeneros } from './redux/actions/actions';
 
 
 document.title = "Book Club";
-const urlBack = 'http://localhost:3001';
+//const urlBack = 'http://localhost:3001';
 //const urlBack = 'http://190.100.208.178:3001';
 
 // codigo para agregar libros
