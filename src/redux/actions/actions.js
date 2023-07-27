@@ -1,40 +1,79 @@
 import * as types from './types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-//const urlBack = 'http://localhost:3001';
-const urlBack = "http://190.100.208.178:3001";
+const urlBack = 'http://localhost:3001';
+//const urlBack = "http://190.100.208.178:3001";
 
 
-export const obtener_Todos_Libros = (pagina,limite) => { 
-    return async (dispatch) => {      
-     try {
-          const  response  = await axios.get(urlBack+`/obtenerLibros?pagina=${pagina}&limite=${limite}`);
-          let data = response.data;          
-          console.log('data: ', data, ' .');
-          dispatch({
-            type: "OBTENER_TODOS_LIBROS",
-            payload: data,
-          });              
+export const obtener_Todos_Libros = (pagina, limite) => { 
+  return  (dispatch) => {      
+   try {
+     axios.get(urlBack+`/obtenerLibros?pagina=${pagina}&limite=${limite}`).then((response)=> {
+        dispatch({
+         type: 'OBTENER_TODOS_LIBROS',
+         payload: {
+           paginaActual: response.data.paginaActual,
+           librosPorPagina: response.data.librosPorPagina,
+           totalLibros: response.data.totalLibros,
+           totalPaginas: response.data.totalPaginas,  
+           libros: response.data.libros,                 
+         },
+                });  
+     }).catch((error) => {
+      console.error('Error al obtener los libros:', error);
+     })                    
+    }
+    catch(error){
+     console.error('Error al listar libros: ', error);
+     toast.error('Error al listar libros.', {  position: toast.POSITION.TOP_RIGHT,  });
+   } }    
+};
+
+export const librosGenero = (pagina, genero, limite) => {
+ return  (dispatch) => {      
+    console.log('genero:',genero);
+    try {
+     axios.get(urlBack+`/obtenerLibroPorGenero?pagina=${pagina}&genero=${genero}&limite=${limite}`).then((response) => {
+       dispatch({
+        type: "LIBROS_GENERO",
+        payload:{
+         paginaActual: response.data.paginaActual, librosPorPagina: response.data.limitePagina, totalLibros: response.data.totalLibros, totalPaginas: response.data.totalPaginas, libros: response.data.libros, } }) } );
       }
-      catch(error){
-       console.error('Error al listar libros: ', error);
-       // Mostrar una notificación de error si es necesario
-       toast.error('Error al listar libros.', {  position: toast.POSITION.TOP_RIGHT,  });
-     } }    
+    catch(error){
+        console.error('Error al listar libros: ', error);
+        toast.error('Error al listar libros.', {  position: toast.POSITION.TOP_RIGHT,  });
+    }
+   };
+};
+
+export const librosPorTitulo = (pagina, titulo, limite) => {
+ return (dispatch) => {      
+    console.log('titulo:',titulo)  /**obtenerLibrosPorTitulo/bat */
+    try {
+    axios.get(urlBack+`/obtenerLibrosPorTitulo?pagina=${pagina}&titulo=${titulo}&limite=${limite}`).then((response) => {
+         dispatch({
+           type: "LIBROS_TITULO",
+           payload:{
+            paginaActual: response.data.paginaActual, librosPorPagina: response.data.limitePagina, totalLibros: response.data.totalLibros, totalPaginas: response.data.totalPaginas, libros: response.data.libros, } }) } );
+         }
+       catch(error){
+           console.error('Error al listar libros: ', error);
+           toast.error('Error al listar libros.', {  position: toast.POSITION.TOP_RIGHT,  });
+       }
+      };
+     
 };
 
 export const agregarLibro = (librodata) => {
    return async (dispatch) => {      
-    try {
-     const navigate = useNavigate(); 
+    try {  
          const  response  = await axios.post(urlBack+`/agregaLibro`,librodata);
          let data = response.data;
          console.log('agregarLibro: ', data, ' .');
          alert('¡Libro agregado correctamente! de ID:'+data.idlibro+'.');
-        // navigate('/detail/'+data.idlibro);
          dispatch({
            type: "AGREGA_LIBRO",
            payload: data,
@@ -42,38 +81,27 @@ export const agregarLibro = (librodata) => {
      }
      catch(error){
       console.error('Error al agregar el libro: ', error);
-      // Mostrar una notificación de error si es necesario
       toast.error('Error al agregar libro. Inténtalo nuevamente.', {  position: toast.POSITION.TOP_RIGHT,  });
      }   
    };
 }
-export const librosGenero = (genero) => {
- return async (dispatch) => {      
-    console.log('genero:',genero)
-         const  response  = await axios.get(urlBack+`/obtenerLibroPorGenero/${genero}`);
-         let data = response.data;
-         console.log('data libros x genero: ', data, ' .');
 
+
+
+/** */
+export const obtenerGeneros = () => {
+ return async (dispatch) => {      
+        const  response  = await axios.get(urlBack+`/obtenerGeneros`);
+        let data = response.data;
+        console.log('data generos: ', data, ' .');
         return  dispatch({
-           type: "LIBROS_GENERO",
+           type: "OBTIENE_GENEROS",
            payload: data,
          });    
      };
 };
 
-export const librosPorTitulo = (titulo) => {
- return async (dispatch) => {      
-    console.log('genero:',titulo)  /**obtenerLibrosPorTitulo/bat */
-         const  response  = await axios.get(urlBack+`/obtenerLibrosPorTitulo/${titulo}`);
-         let data = response.data;
-         console.log('data libros x genero: ', data, ' .');
 
-        return  dispatch({
-           type: "LIBROS_TITULO",
-           payload: data,
-         });    
-     };
-};
 
 export const eliminaLibro = (idlibro) => {
  return async (dispatch) => {      
@@ -104,8 +132,99 @@ export const modificaLibro = (idlibro) => {
       }
    };
 };
+ /** */
+export function agregaCarrito(libro) {
+ console.log('si entra al carrito');
+ return {
+   type: "AGREGAR_AL_CARRITO",
+   payload: libro,
+ };
+}
+
+export function obtieneDetalleLibro(idlibro) {
+ return async function (dispatch) {
+  console.log('idlibro: ',idlibro)
+   const resp = await axios( urlBack+`/obtenerLibroId/${idlibro}` );
+   console.log('actionresp: ',resp.data)
+   return dispatch({
+     type: "DETALLE_LIBRO",
+     payload: resp.data,
+   });
+ };
+}
+
+export const deleteLibroCarro = (idlibro) => {
+ return {
+   type: "BORRA_LIBROCARRO",
+   payload: idlibro
+ };
+};
+
+export const updateCarrito = (idlibro,imagen,nombrelibro,preciolibro,cantidad,subtotalitem) => {
+ return {
+   type: 'UPDATE_CARRITO',
+   payload: {
+     idlibro,
+     imagen,
+     nombrelibro,
+     preciolibro,  
+     cantidad,            
+     subtotalitem
+   }
+ };
+};
+
+export const cambiarFlagNav = (nuevoValor) => {
+ return (dispatch) => {
+   dispatch({
+     type: 'CAMBIAR_FLAG_NAV',
+     payload: nuevoValor,
+   });
+ };
+};
+
+export const elGenero = (nuevoValor) => {
+ return (dispatch) => {
+   dispatch({
+     type: 'CAMBIAR_GEN',
+     payload: nuevoValor,
+   });
+ };
+};
+
+export const elTitulo = (nuevoValor) => {
+ return (dispatch) => {
+   dispatch({
+     type: 'CAMBIAR_TITULO',
+     payload: nuevoValor,
+   });
+ };
+};
 
 
+
+ /**  LIMPIAR carrito DE LA PERSISTENCIA  */
+ export const limpiarCarrito = () => {
+  return {  type: "LIMPIAR_CARRITO" };
+ };
+ /** REINICIA STORE */
+ export const reinicia_store = () => {
+ return {  type: "REINICIA_STORE"  }; 
+ };
+  
+
+/*
+
+export function getDetail(id) {
+  return async function (dispatch) {
+    const json = await axios( urlBack+`/producto/${id}` );
+    return dispatch({
+      type: GET_DETAIL,
+      payload: json.data,
+    });
+  };
+}
+*/
 
 /*
   librosPorPagina: 4

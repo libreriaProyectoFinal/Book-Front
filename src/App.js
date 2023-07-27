@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home.jsx';
-import librosJSON from './libros.json';
-import axios from 'axios';
+// import librosJSON from './libros.json';
+// import axios from 'axios';
 import NavBar from './components/Nav/Nav';
 import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFound/NotFound';
 import FormC from './components/FormIngresoC/form.jsx';
 import Detail from './components/Detail/Detail.jsx';
-
 import AgregaLibro from './components/FormIngresoC/AgregarLibroForm.jsx';
 //import EditaLibro from './components/FormIngresoC/EditarLibroForm.jsx';
 
 
 document.title = "Book Club";
-const urlBack = 'http://localhost:3001';
+// const urlBack = 'http://localhost:3001';
 //const urlBack = 'http://190.100.208.178:3001';
 
 // codigo para agregar libros
@@ -50,9 +49,12 @@ const urlBack = 'http://localhost:3001';
 
 function App() {
 
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
+
   return (
     <div className="App">
-     <NavBar /> 
+      {!isLandingPage && <NavBar />} 
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="/formC" element={<FormC/>} />
@@ -71,7 +73,7 @@ function App() {
         {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
         <Route path="/*" element={<NotFoundPage/>} />
       </Routes>
-
+      
     </div>
   );
 }

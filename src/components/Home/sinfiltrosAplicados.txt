@@ -1,0 +1,179 @@
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Button, Select, Container, Typography, Autocomplete, TextField, Grid, FormControl, OutlinedInput, MenuItem,   } from '@mui/material';
+import './Home.css'
+import Pagination from '../Paginate/Paginate';
+import { obtener_Todos_Libros } from '../../redux/actions/actions';
+import Cardsw from '../Cards/Cardsw';
+import Footer from './../Footer/Footer';
+
+const Home = () => {
+ const dispatch = useDispatch();
+ const todoLibros = useSelector((state) => state.libros);
+ const [libros, setLibros] = useState([]);
+ const [currentPage, setCurrentPage] = useState(1);
+ const librosPorPagina = 12;
+ const [totalLibros, setTotalLibros] = useState();
+
+ const [selectedGenre, setSelectedGenre] = useState(null);
+ const [genres, setGenres] = useState([]);
+ const [uniqueGenres, setUniqueGenres] = useState([]); 
+
+ const [selectedAuthor, setSelectedAuthor] = useState(null);
+ const [authors, setAuthors] = useState([]);
+ const [uniqueAuthors, setUniqueAuthors] = useState([]);
+
+ const [ordenPrecio, setOrdenPrecio] = useState('');
+ const [uniquePrices, setUniquePrices] = useState([]);
+ const opcionesPrecio = ordenPrecio === 'descendente' ? uniquePrices.descendente : uniquePrices.ascendente;
+
+
+ const indexOfLastBook = currentPage * librosPorPagina;
+ const indexOfFirstBook = indexOfLastBook - librosPorPagina;
+ const currentBooks = Array.isArray(libros) ? libros.slice(indexOfFirstBook, indexOfLastBook) : [];
+
+
+ useEffect(() => {
+  dispatch(obtener_Todos_Libros(currentPage, librosPorPagina));
+}, [currentPage,dispatch]);
+
+useEffect(() => {
+ if (todoLibros && todoLibros.libros) {
+   setLibros(todoLibros.libros);
+   setTotalLibros(todoLibros.totalLibros);
+
+   if (Array.isArray(todoLibros.libros)) {
+     const uniqueGenres = [...new Set(todoLibros.libros.map(book => book.nombregenero))];
+     setGenres(uniqueGenres);
+     setUniqueGenres(uniqueGenres);
+
+     const uniqueAuthors = [...new Set(todoLibros.libros.map(book => book.nombreautor))];
+     setAuthors(uniqueAuthors);
+     setUniqueAuthors(uniqueAuthors);
+
+      const uniquePricesAsc = [...new Set(todoLibros.libros.map(book => book.preciolibro))];
+      const uniquePricesDesc = [...uniquePricesAsc].sort((a, b) => b - a);
+      setUniquePrices({ ascendente: uniquePricesAsc, descendente: uniquePricesDesc });
+
+      }
+     }
+}, [todoLibros]);
+
+
+const handlePageChange = (pageNumber) => {
+    console.log("pageNumber ", pageNumber);
+    setCurrentPage(pageNumber);
+};
+
+const handleGenreFilter = (event) => {
+  setSelectedGenre(event.target.value);
+};
+
+const handleAuthorFilter = (event) => {
+  setSelectedAuthor(event.target.value);
+};
+
+const handlePriceFilter = (event) => {
+  setOrdenPrecio(event.target.value);
+};
+
+const handleSortAsc = () => {
+  setOrdenPrecio('ascendente');
+};
+
+const handleSortDesc = () => {
+  setOrdenPrecio('descendente');
+};
+
+
+const filteredBooks = libros.filter(book => !selectedGenre || book.nombregenero === selectedGenre);
+
+
+const filteredBooksByAuthor = filteredBooks.filter(book => !selectedAuthor || book.nombreautor === selectedAuthor);
+
+
+const filteredBooksByPrice = ordenPrecio
+? filteredBooksByAuthor.sort((a, b) => ordenPrecio === 'ascendente' ? a.preciolibro - b.preciolibro : b.preciolibro - a.preciolibro)
+: filteredBooksByAuthor;
+
+      
+ return (
+  <Container component="main" maxWidth="md">
+      <Typography variant="h2" align="center" gutterBottom sx={{ mt:10 }}>
+         Lista de Libros
+         </Typography>
+         <Grid container spacing={10} alignItems="center" flexWrap="nowrap">
+          <Grid item xs={4}>
+            {/* Genero */}
+            <FormControl fullWidth>
+      <TextField
+        id="combo-box-demo"
+        select
+        label="Género"
+        value={selectedGenre}
+        onChange={handleGenreFilter}
+        SelectProps={{
+          native: true,
+        }}
+      >
+        {/* Default Option */}
+        <option value="" disabled>
+          Género
+        </option>
+
+        {/* Options from uniqueGenres array */}
+        {uniqueGenres.map((genre) => (
+          <option key={genre} value={genre}>
+            {genre}
+          </option>
+        ))}
+      </TextField>
+    </FormControl>
+          </Grid>
+          <Grid item xs={4}>
+            {/* Autor/a */}
+            <Autocomplete
+            disablePortal
+            id="combo-box-author"
+            options={uniqueAuthors}
+            sx={{ width: '110%', mb: 8, mt: 8 }}
+            onChange={handleAuthorFilter}
+            value={selectedAuthor}
+            renderInput={(params) => <TextField {...params} label="Autor" />}
+          />
+          </Grid>
+          <Grid item xs={4}>
+          {/* Precio */}
+          <FormControl sx={{ width: '110%', mb: 8, mt: 8 }}>
+            <Select
+              value={ordenPrecio}
+              onChange={handlePriceFilter}
+              displayEmpty
+              input={<OutlinedInput />}
+              renderValue={(selected) => (selected ? `Órden: ${selected === 'ascendente' ? 'Ascendente' : 'Descendente'}` : 'Ordenar por precio')}
+            >
+              <MenuItem value=""><em>Ordenar por precio</em></MenuItem>
+              <MenuItem value="ascendente" onClick={handleSortAsc}>
+                Ascendente
+              </MenuItem>
+              <MenuItem value="descendente" onClick={handleSortDesc}>
+                Descendente
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        </Grid>
+        <Cardsw books={libros} />
+        <Pagination
+          currentPage={currentPage} 
+          totalBooks={totalLibros} 
+          librosPorPagina={librosPorPagina}
+          onPageChange={handlePageChange}
+        />
+
+        <Footer />
+      </Container>
+    );
+};
+
+export default Home;
