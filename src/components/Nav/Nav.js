@@ -1,38 +1,44 @@
 import React , {  useEffect, useState} from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link , useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Nav.css';
-import { librosGenero, librosPorTitulo } from '../../redux/actions/actions';
+import { librosGenero, librosPorTitulo , obtenerGeneros ,cambiarFlagNav, elGenero, elTitulo} from '../../redux/actions/actions';
 
 //const urlBack = 'http://localhost:3001';
-const urlBack = "http://190.100.208.178:3001";
+//const urlBack = "http://190.100.208.178:3001";
 
 const NavBar = () => {
  const dispatch = useDispatch();
  const navigate = useNavigate(); 
- const [generos, setGeneros] = useState([]);
+
  const [selectedGenre, setSelectedGenre] = useState(null);
  const [buscaTitulo, setBuscaTitulo] = useState(''); 
- 
- useEffect(() => {
+ const generos = useSelector(state => state.generos); 
 
-  axios.get(urlBack+'/obtenerGeneros')
-    .then((response) => {  setGeneros(response.data);  })
-    .catch((error) => {  console.error('Error al obtener los géneros:', error);  });
-}, []);
+const cambiarFlag1   = (numchar)   => { dispatch(cambiarFlagNav(numchar)); };
 
-const searchBooksByTitle = () => {
- if (buscaTitulo.trim() !== '') { navigate('/home');
-   dispatch(librosPorTitulo(buscaTitulo));
- }
+const cambiarGenero  = (param)     => { dispatch(elGenero(param)); };
+
+const cambiarTitulo  = (param)     => { dispatch(elTitulo(param)); };
+
+
+const searchBooksByTitle = (buscaTitulo) => {
+    cambiarFlag1("2");
+    cambiarTitulo(buscaTitulo);
+    navigate("/home");
 };
-  const fetchBooksByGenre = (genreId) => {
-     navigate("/home");
-     dispatch(librosGenero(genreId));
+
+const fetchBooksByGenre = (nombregenero) => {
+    cambiarFlag1("1");
+    cambiarGenero(nombregenero);
+    navigate("/home");
  };
+
  const navigateToHome = () => {
-     navigate("/home");
+    cambiarFlag1("0");
+    cambiarGenero("all");
+    navigate("/home");
   //   window.location.reload(); // Recargar la página
 };
 
@@ -53,14 +59,10 @@ const searchBooksByTitle = () => {
               className="form-control me-2"
               placeholder="Buscar por título..."
               value={buscaTitulo}
-              onChange={(e) => {
-               setBuscaTitulo(e.target.value);
-               searchBooksByTitle();
+              onChange={(e) => {  setBuscaTitulo(e.target.value); searchBooksByTitle(e.target.value);
              }}
               onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  searchBooksByTitle();
-                }
+                if (e.key === 'Enter') {  searchBooksByTitle();  }
               }}
             />
 

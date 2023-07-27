@@ -1,11 +1,17 @@
 import * as types from '../actions/types';
 
 const initialState = {
+    flagNav: "0",
+    generonav: "all",
+    titulonav: "todo",
+    loggedUser:"claudiodavid339@gmail.com",
     libros: [],
     librosGenero:[],
     librosOriginal: [],
     libro: {},
-    DetalleLibro: {},
+    generos:[],
+    details: [],
+    carrito:[],
     LibroActualizado: {},
     LibroEliminado: {},
     LibroAgregado: {},
@@ -16,9 +22,7 @@ const initialState = {
 
     librosAutor: [],
 }
-/* 
-
-
+/* waldir
     case "GET_ALL_PRODUCTS":
       return {
         ...state,
@@ -38,15 +42,97 @@ const rootReducer = (state = initialState,{ type, payload }) => {
                 libros: payload,
                 librosOriginal: payload
             }
+
         case "LIBROS_GENERO":
          return {
              ...state,
              libros: payload,      
+             librosOriginal: payload
          }
 
-         case "LIBROS_TITULO":
+       case "OBTIENE_GENEROS":
           return {
+           ...state,
+           generos: payload,      
+         }
+
+       case "LIBROS_TITULO":
+        return {
+            ...state,
+            libros: payload,      
+            librosOriginal: payload
+        }
+
+       case "AGREGAR_AL_CARRITO":
+        return {
+          ...state,
+          carrito: [...state.carrito, payload],
+        };
+           
+       case "DETALLE_LIBRO":
+        return {
+          ...state,
+          details: payload  ,
+        };
+
+       case "BORRA_LIBROCARRO":
+        const updatedCarritox = state.carrito.filter(product => product.idlibro !== payload);
+        return {
+          ...state,
+          carrito: updatedCarritox
+        };
+
+       case "LIMPIAR_CARRITO":
+        return { ...initialState, };
+            
+       case "REINICIA_STORE":
+        return {        
+          flagNav: "0",
+          generonav:"",
+          titulonav:"todo",
+          loggedUser:"claudiodavid339@gmail.com",
+          libros: [],
+          librosGenero:[],
+          librosOriginal: [],
+          libro: {},
+          generos:[],
+          details: [],
+          carrito:[],
+          LibroActualizado: {},
+          LibroEliminado: {},
+          LibroAgregado: {},
+          LibroFiltrado: [],
+          LibroOrdenado: [],
+          PaginaActual: 1,
+          localizaciones: []
+        };
+
+        case 'UPDATE_CARRITO':
+         const { idlibro, imagen, nombrelibro, preciolibro, cantidad, subtotalitem } = payload;
+        
+         const updatedCarrito = state.carrito.map((producto) => {
+           if (producto.idlibro === idlibro) {
+             return {
+               ...producto,
+               idlibro,
+               imagen,
+               nombrelibro,
+               preciolibro,
+               cantidad,                        
+               subtotalitem
+             };
+           }
+           return producto; });
+        
+           return {
+             ...state,
+             carrito: updatedCarrito
+           }; 
+           
+           case 'CAMBIAR_FLAG_NAV':
+            return {
               ...state,
+<<<<<<< HEAD
               libros: payload,      
           }
  
@@ -55,7 +141,41 @@ const rootReducer = (state = initialState,{ type, payload }) => {
                 ...state,
                 libros: payload,      
             }
+=======
+              flagNav: payload,
+            };
 
+            case 'CAMBIAR_GEN':
+             return {
+               ...state,
+               generonav: payload,
+             };
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
+
+             case 'CAMBIAR_TITULO':
+              return {
+                ...state,
+                titulonav: payload,
+              };
+            /**
+             *     case GET_DETAIL:
+      return {
+        ...state,
+        details: payload,
+      };
+             */
+
+            /**
+              
+             
+    case GET_DETAIL:
+      return {
+        ...state,
+        details: payload,
+      };
+ 
+             
+             */
 
         case types.OBTENER_LIBRO_POR_ID:
             return {

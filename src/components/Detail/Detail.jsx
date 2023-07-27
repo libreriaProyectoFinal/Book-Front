@@ -6,8 +6,7 @@ import { agregaCarrito } from '../../redux/actions/actions';
 import { obtieneDetalleLibro } from '../../redux/actions/actions.js'
 import { Link } from "react-router-dom";
 import axios from 'axios';
-const urlBack = 'http://localhost:3001';
-//const urlBack = "http://190.100.208.178:3001";
+
 
 function Detail() {
   let  { idl } = useParams();
@@ -41,9 +40,6 @@ function Detail() {
   //########### EL HANDLE DE AGREGAR PRODUCTO AL CARRITO ##############
   function handleSubmit(e) {
 
-    // console.log(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
-    //  alert(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
-     // e.preventDefault();
      const productExists = carrito.some((libro) => libro.idlibro === idlibro);
      if (productExists) { alert("Este producto ya está en el carrito.");
        return; 
@@ -59,6 +55,7 @@ function Detail() {
    };
 
    dispatch( agregaCarrito( librosAgregar ));
+   
    alert(`Agregaste el libro ${nombrelibro} a tu carrito`);
  }
 

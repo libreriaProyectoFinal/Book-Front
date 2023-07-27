@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import React, { } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+=======
+import React, { useEffect ,useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Routes, Route } from 'react-router-dom';
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
 import './App.css';
 import Home from './components/Home/Home.jsx';
 // import librosJSON from './libros.json';
@@ -9,12 +15,22 @@ import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFound/NotFound';
 import FormC from './components/FormIngresoC/form.jsx';
 import Detail from './components/Detail/Detail.jsx';
+<<<<<<< HEAD
+=======
+import Carrito from "./components/Carrito/Carrito/Carrito";
+
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
 import AgregaLibro from './components/FormIngresoC/AgregarLibroForm.jsx';
+import { obtener_Todos_Libros, obtenerGeneros } from './redux/actions/actions';
 //import EditaLibro from './components/FormIngresoC/EditarLibroForm.jsx';
 
 
 document.title = "Book Club";
+<<<<<<< HEAD
 // const urlBack = 'http://localhost:3001';
+=======
+//const urlBack = 'http://localhost:3001';
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
 //const urlBack = 'http://190.100.208.178:3001';
 
 // codigo para agregar libros
@@ -48,10 +64,19 @@ document.title = "Book Club";
  //enviarLibros();
 
 function App() {
+<<<<<<< HEAD
 
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
 
+=======
+ const dispatch = useDispatch();
+ const [currentPage, setCurrentPage] = useState(1);
+ const librosPorPagina = 4;
+ useEffect(() => {   dispatch(obtenerGeneros()); 
+                     dispatch(obtener_Todos_Libros(1,4));
+                 }, []);
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
   return (
     <div className="App">
       {!isLandingPage && <NavBar />} 
@@ -70,12 +95,15 @@ function App() {
         <Route path="/about" element={<h1>About</h1>} />
         <Route path="/detail/:idl"  element={<Detail />} />
         <Route path="/agregalibro" element={<AgregaLibro />} />
+        <Route path="/carrito" element={<Carrito />} />
         {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
         <Route path="/*" element={<NotFoundPage/>} />
       </Routes>
+<<<<<<< HEAD
       
+=======
+>>>>>>> aad8582fcf1e22130e9adf4e3becb76bafdeb7d3
     </div>
   );
 }
-
 export default App;
