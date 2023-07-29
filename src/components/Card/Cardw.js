@@ -36,12 +36,12 @@ const handleDeleteClick = (idlibro) => {
         className="card-img-top custom-card-img"
       />
       <div className="card-body">
-        <p className="card-text">ID: {book.idlibro}</p> 
-        <Link to={`/detail/${book.idlibro}`}>
+        <p className="card-text">ID: {book.id}</p> 
+        <Link to={`/detail/${book.id}`}>
           <h5 className="card-title">{book.nombrelibro}</h5>
         </Link>
-        <Link to={`/detail/${book.idlibro}`}>
-        <h3 className="card-text">Género: {book.nombregenero}</h3>        
+        <Link to={`/detail/${book.id}`}>
+        <h3 className="card-text">Género: {book.genero?.nombregenero}</h3>        
         </Link>
         <p></p>
         <h3 className="card-text">Valor:${book.preciolibro}</h3> 
