@@ -8,6 +8,7 @@ import { urlBack, limpiarCarrito,reinicia_store } from '../../../redux/actions/a
 //const urlBack = 'http://localhost:3001';
 //const urlBack = 'https://commerce-back-2025.up.railway.app';
 
+
 Modal.setAppElement("#root");
 
 export function showMessage(message, url) {
@@ -82,7 +83,7 @@ export default function Total({ productos, sumatotal }) {
         <p>${sumatotal}</p>
       </div>
       <div className={s.total}>
-        <button onClick={ reiniciaCarro }>Limpia CArro </button>
+        <button onClick={ reiniciaCarro }>Limpiar Carro </button>
       </div>
       <button className={s.button} onClick={handleCompra}>
         <span>Comprar</span>

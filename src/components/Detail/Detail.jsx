@@ -25,9 +25,9 @@ function Detail() {
    setLibro(libroDetail);
  }, [libroDetail]); 
 
- const { idlibro, nombrelibro, desclibro, nombreautor, preciolibro, displibro, fotolibro } = libro;
+ const { id, nombrelibro, desclibro, nombreautor, preciolibro, displibro, fotolibro } = libro;
 
-  console.log('idparams', libro.idlibro);
+  console.log('idparams', libro.id);
   console.log('nombrelibro:',libro.nombrelibro);
   console.log('desclibro:',libro.desclibro);
 
@@ -40,13 +40,13 @@ function Detail() {
   //########### EL HANDLE DE AGREGAR PRODUCTO AL CARRITO ##############
   function handleSubmit(e) {
 
-     const productExists = carrito.some((libro) => libro.idlibro === idlibro);
+     const productExists = carrito.some((libro) => libro.id === id);
      if (productExists) { alert("Este producto ya está en el carrito.");
        return; 
      }
 
    const librosAgregar = {
-     idlibro: idlibro,
+     idlibro: id,
      imagen: fotolibro,
      nombrelibro: nombrelibro,
      preciolibro: preciolibro, 
@@ -66,7 +66,7 @@ function Detail() {
      <Contenedor >
         {/* <Btn onClick={handleGoBack}>Volver</Btn> */}
         <Img src={fotolibro} />
-        <Tit>id: {idlibro}</Tit>
+        <Tit>id: {id}</Tit>
         <Tit>Titulo: {nombrelibro}</Tit>
         <Tit>Descripcion: {desclibro}</Tit>
         <Tit>Nota Biografica {nombreautor}</Tit>

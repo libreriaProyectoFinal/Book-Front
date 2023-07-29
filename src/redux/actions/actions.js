@@ -7,7 +7,7 @@ import axios from "axios";
 // const urlBack = 'http://localhost:3001';
 // const urlBack = "http://190.100.208.178:3001";
 // const urlBack = "https://book-front-mu.vercel.app/"
-const urlBack = "https://book-back-libreriaproyectofinal.vercel.app/" // acuerdense que esta llamando el BACK-DEPLOY
+export const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" // acuerdense que esta llamando el BACK-DEPLOY
 
 
 export const obtener_Todos_Libros = (pagina, limite) => { 
@@ -81,7 +81,7 @@ export const agregarLibro = (librodata) => {
          const  response  = await axios.post(urlBack+`/agregaLibro`,librodata);
          let data = response.data;
          console.log('agregarLibro: ', data, ' .');
-         alert('¡Libro agregado correctamente! de ID:'+data.idlibro+'.');
+         alert('¡Libro agregado correctamente! de ID:'+data.id+'.');
          dispatch({
            type: "AGREGA_LIBRO",
            payload: data,
