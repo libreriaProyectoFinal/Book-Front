@@ -143,12 +143,12 @@ const generos = [
         
         <tbody>
           <tr>
-            <td>{libro.idlibro}</td>
+            <td>{libro.id}</td>
             <td>{libro.nombrelibro}</td>
-            <td>{libro.nombreautor}</td>
+            <td>{libro.autor.nombreautor}</td>
             <td>{libro.desclibro}</td>
             <td>{libro.displibro}</td>
-            <td>{libro.nombregenero}</td>
+            <td>{libro.genero.nombregenero}</td>
             <td>{libro.preciolibro}</td>
             <td>
               <img
