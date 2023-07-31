@@ -1,0 +1,92 @@
+/* Estilos base */
+.containerLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.bg-danger{
+  color: #ffffff;
+}
+
+.d-grid {
+  display: grid;
+  gap: 15px;
+}
+
+/* Estilos para el mensaje de bienvenida */
+.modal-body {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilos para el botón de cierre del modal */
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  margin: 0 auto;
+}
+
+/* Estilos para el botón de aceptar el mensaje de redirección */
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  margin: 0 auto;
+}
+
+/* Estilos para el botón de cierre del modal de redirección */
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  margin: 0 auto;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+
+  /* Ajustar el ancho de los inputs en una columna */
+  .d-grid {
+    grid-template-columns: 1fr;
+  }
+}
