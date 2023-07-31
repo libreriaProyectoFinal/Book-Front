@@ -62,7 +62,7 @@ const fetchBooksByGenre = (nombregenero) => {
               onChange={(e) => {  setBuscaTitulo(e.target.value); searchBooksByTitle(e.target.value);
              }}
               onKeyPress={(e) => {
-                if (e.key === 'Enter') {  searchBooksByTitle();  }
+                if (e.key === 'Enter') {  searchBooksByTitle(e.target.value);  }
               }}
             />
 
@@ -108,6 +108,11 @@ const fetchBooksByGenre = (nombregenero) => {
           <li className="nav-item">
             <Link className="nav-link" to="/carrito">
               Carrito
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/admin">
+              Admin
             </Link>
           </li>
         </ul>

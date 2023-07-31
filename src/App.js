@@ -14,6 +14,7 @@ import Carrito from "./components/Carrito/Carrito/Carrito";
 
 import AgregaLibro from './components/FormIngresoC/AgregarLibroForm.jsx';
 import { obtener_Todos_Libros, obtenerGeneros } from './redux/actions/actions';
+import Admin from './components/Admin/Admin';
 //import EditaLibro from './components/FormIngresoC/EditarLibroForm.jsx';
 
 
@@ -77,6 +78,7 @@ function App() {
         <Route path="/detail/:idl"  element={<Detail />} />
         <Route path="/agregalibro" element={<AgregaLibro />} />
         <Route path="/carrito" element={<Carrito />} />
+        <Route path="/admin" element={<Admin />} />
         {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
         <Route path="/*" element={<NotFoundPage/>} />
       </Routes>
