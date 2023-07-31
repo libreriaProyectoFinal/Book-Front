@@ -7,6 +7,7 @@ import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux
 import NavBar from '../Nav/Nav';
 import Cardsw from '../Cards/Cardsw';
 import Footer from './../Footer/Footer';
+// import NavBar from '../navbar/navbar';
 
 const Home = () => {
  const flagNav = useSelector((state) => state.flagNav);

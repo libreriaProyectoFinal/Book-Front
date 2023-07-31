@@ -16,6 +16,9 @@ import AgregaLibro from './components/FormIngresoC/AgregarLibroForm.jsx';
 import { obtener_Todos_Libros, obtenerGeneros } from './redux/actions/actions';
 import Admin from './components/Admin/Admin';
 //import EditaLibro from './components/FormIngresoC/EditarLibroForm.jsx';
+// user
+import LoginForm from './components/Usuario/Login/Login';
+import RegisterForm from './components/Usuario/Registro/Registro';
 
 
 document.title = "Book Club";
@@ -65,8 +68,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="/formC" element={<FormC/>} />
-        <Route path="/login" element={<h1>Login</h1>} />
-        <Route path="/register" element={<h1>Register</h1>} />
+        {/* registro de usuario */}
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm/>} />
+
         <Route path="/dashboard" element={<h1>Dashboard</h1>} />
         <Route path="/profile" element={<h1>Profile</h1>} />
         <Route path="/settings" element={<h1>Settings</h1>} />

@@ -18,7 +18,8 @@ const initialState = {
     LibroFiltrado: [],
     LibroOrdenado: [],
     PaginaActual: 1,
-    localizaciones: []
+    localizaciones: [],
+    user:null,
 }
 /* waldir
     case "GET_ALL_PRODUCTS":
@@ -221,6 +222,17 @@ const rootReducer = (state = initialState,{ type, payload }) => {
                 ...state,
                 libro: payload
             }
+            case 'LOGIN_USER':
+              return {
+                  ...state,
+                  user: payload,
+              };
+          case 'LOGOUT_USER':
+          return {
+              ...state,
+              user: null,
+          };
+  
 
 
         default:

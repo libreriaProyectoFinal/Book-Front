@@ -30,3 +30,88 @@
     background-color: #333;
   }
   
+
+  /* usuario y cmabios */
+  /* Estilos para el componente NavBar */
+.navbar {
+
+  background-color: #f8f9fa;
+
+    padding: 10px 0;
+  }
+  
+  .navbar-brand {
+    margin-right: 30px;
+  }
+  
+  .img_logo_navbar {
+   margin-top: 0;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-left: 20px;
+    color: #333;
+  }
+  .btn_cierre button {
+    margin-top: 0;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff;
+  }
+  
+  /* Estilos para el botón del navbar */
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #333;
+  }
+  
+  /* Nav.css */
+
+
+.nav-link {
+  color: #333;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.username-link {
+  /* Estilo para el enlace del nombre de usuario */
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.username-link:hover {
+  color: #bd2130;
+}
+
+.img_usuario{
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0;
+}
+.perfilUsuario{
+  position: relative;
+}
+.primer_span {
+  /* Estilos para el primer span */
+  margin-bottom: 5px; 
+}
+.segundo_span{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  color: black;
+  transform: translateX(-50%);
+  
+}
+.perfilUsuario:hover .segundo_span{
+  display: block;
+}
