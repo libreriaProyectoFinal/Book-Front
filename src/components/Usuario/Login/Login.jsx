@@ -10,6 +10,7 @@ import { loginUser } from "../../../redux/actions/actions";
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
+const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
 const firebaseConfig = {
   apiKey: "AIzaSyDsWr0rA7m8n9MpkZyBbWxS8wda0Qp9KJQ",
@@ -48,9 +49,9 @@ const [useremail,setUseremail] =useState('')
     return password.length >= 6 ? "" : "La contraseña debe tener al menos 6 caracteres.";
   };
   
-  const validateGoogleEmail = (email) => {
+  /*const validateGoogleEmail = (email) => {
     return email.endsWith("@gmail.com") ? "" : "El correo electrónico debe ser de Google (@gmail.com).";
-  };
+  };*/
 
 
  // Función para almacenar el usuario en el Local Storage
@@ -120,18 +121,18 @@ useEffect(() => {
   }
 
   // Validar que el correo sea de Google
-  const googleEmailError = validateGoogleEmail(email);
+  /*const googleEmailError = validateGoogleEmail(email);
   setEmailError(googleEmailError);
   if (googleEmailError) {
     return;
-  }
+  }*/
 
    
     // Resto del código de manejo de autenticación...
  
     try {
       // Enviar los datos al servidor mediante una solicitud POST
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post(urlBack+"/login", {
         email,
         passwordKey,
       });
@@ -165,7 +166,7 @@ useEffect(() => {
 console.log(idToken)
       try {
         // Enviar el idToken al servidor utilizando Axios o cualquier otra biblioteca de solicitudes HTTP
-        const response = await axios.post('http://localhost:3001/login/google', { idToken });
+        const response = await axios.post(urlBack+'/login/google', { idToken });
 
         // Comprobar la respuesta del servidor y mostrar el mensaje correspondiente
         if (response.data.user.rol === 'admin') {

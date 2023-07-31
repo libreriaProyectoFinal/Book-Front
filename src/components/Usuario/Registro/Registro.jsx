@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './Registro.module.css';
 import axios from "axios";
 
+const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
+
 const RegisterForm = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false); // Estado para controlar la ventana modal de registro exitoso
   const [formError, setFormError] = useState(null);
@@ -44,7 +46,7 @@ const RegisterForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/crearUsuario",
+        urlBack+"/crearUsuario",
         data
       );
       console.log("Respuesta del servidor:", response.data);
