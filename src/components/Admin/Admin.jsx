@@ -28,6 +28,7 @@ const customStyles = {
     justifyContent: 'center',
   },
 };
+const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
 function Admin() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -52,7 +53,7 @@ function Admin() {
   const borrarLibro = (id) => {
     console.log(id);
     axios
-      .patch(`http://localhost:3001/borradoLibro/${id}`)
+      .delete(urlBack+`/borradoLibro/${id}`)
       .then((response) => {
         if (response.status === 200) {
           // Realizar cualquier acción necesaria después de borrar el libro
