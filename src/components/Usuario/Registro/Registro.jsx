@@ -7,7 +7,6 @@ import axios from "axios";
 import { urlBack } from "../../../redux/actions/actions";
 import NavBar from "../../navbar/navbar";
 
-const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
 const RegisterForm = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false); // Estado para controlar la ventana modal de registro exitoso
