@@ -7,7 +7,7 @@ export default function Mensaje() {
     <div className={s.mensaje}>
       <h1>Tu carrito está vacío</h1>
       <p>
-        ¿No sabés qué comprar? ¡Miles de productos en All Market te esperan!
+        ¿No sabés qué comprar? ¡Miles de libros te esperan!
       </p>
       <Link to={"/"}>
         <button>Explorar Mas</button>

@@ -67,7 +67,7 @@ const Carrito = () => {
                 ))
               ) }         
         <div className={s.subtotalTotal}>
-          TotalTabla: ${sumaTotal}
+          Total: ${sumaTotal}
         </div>
         </div>    
         <Total productos={productos} sumatotal={sumaTotal} updateCarrito={updateCarrito} />            
