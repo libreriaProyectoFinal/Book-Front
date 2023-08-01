@@ -9,6 +9,7 @@ import { loginUser } from "../../../redux/actions/actions";
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import NavBar from "../../navbar/navbar";
 
 const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
@@ -204,6 +205,8 @@ console.log(idToken)
   };
 
   return (
+    <>
+    <NavBar/>
     <div className={styles.containerLogin}>
       <div className={styles['row']}>
         <div className={styles['col-md-6']}>
@@ -279,6 +282,7 @@ console.log(idToken)
         </Modal.Footer>
       </Modal>
     </div>
+    </>
   );
 };
 

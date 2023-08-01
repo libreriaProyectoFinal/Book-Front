@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import './Home.css'
 import Pagination from '../Paginate/Paginate';
 import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux/actions/actions';
-import NavBar from '../Nav/Nav';
+import NavBar from '../navbar/navbar';
 import Cardsw from '../Cards/Cardsw';
 import Footer from './../Footer/Footer';
+import Filtros from './FiltroLibros/Filtros';
 // import NavBar from '../navbar/navbar';
 
 const Home = () => {
@@ -33,7 +34,8 @@ const handlePageChange = (pageNumber) => {
 
  return (
  <div className="home-page">
-   {/* <NavBar /> */}
+   <NavBar />
+   <Filtros/>
    <div className="container mt-5">
      <h1>Lista de Libros</h1>
      <Cardsw books={libros.libros} />

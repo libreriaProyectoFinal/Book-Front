@@ -5,6 +5,7 @@ import Mensaje from "../Mensaje/Mensaje";
 import Seleccion from "../Seleccion/Seleccion";
 import { updateCarrito } from "../../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import NavBar from "../../navbar/navbar";
 
 const Carrito = () => {
 
@@ -46,6 +47,8 @@ const Carrito = () => {
  };
 
  return (
+  <>
+  <NavBar/>
   <div>
     <div className={s.fondo}>
       <div className={s.caja}>
@@ -75,6 +78,7 @@ const Carrito = () => {
     </div>
     <div></div>
   </div>
+  </>
 );
 };
 export default Carrito;
