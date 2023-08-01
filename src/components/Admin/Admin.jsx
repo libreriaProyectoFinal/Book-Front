@@ -7,6 +7,7 @@ import "./Admin.css";
 import { obtener_Todos_Libros } from "../../redux/actions/actions";
 import AgregarLibroModal from "./AgregarLibro/AgregarLibroModal";
 import Modal from "react-modal";
+import NavBar from "../navbar/navbar";
 const customStyles = {
   content: {
     top: '50%',
@@ -104,6 +105,8 @@ function Admin() {
   // };
 
   return (
+    <>
+    <NavBar/>
     <div className="table_List">
       <div className="table_List_cuerpo">
         {/* <NavBar /> */}
@@ -153,6 +156,7 @@ function Admin() {
         <button onClick={() => setModalIsOpen(false)}>Cerrar</button>
       </Modal>
     </div>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './LandingPage.css';
 import {  useNavigate } from 'react-router-dom';
-import Footer from './../Footer/Footer';
+
 
 const LandingPage = () => {
 
@@ -36,7 +36,7 @@ const LandingPage = () => {
       <footer className="bg-light py-3 text-center">
         <p className="fs-6 text-muted">Contacto: contacto@books.com</p>
       </footer>
-      <Footer />
+     
     </div>
   );
 };

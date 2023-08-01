@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './Registro.module.css';
 import axios from "axios";
 import { urlBack } from "../../../redux/actions/actions";
+import NavBar from "../../navbar/navbar";
 
 const RegisterForm = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false); // Estado para controlar la ventana modal de registro exitoso
@@ -60,6 +61,8 @@ const RegisterForm = () => {
 
   
   return (
+    <>
+    <NavBar/>
     <div className={styles['register-form-container']}>
     <div className={styles['register-form-card']}>
       <h5 className={styles['register-form-title']}>Registro de Usuario</h5>
@@ -192,6 +195,7 @@ const RegisterForm = () => {
       </div>
     )}
   </div>
+  </>
   );
 };
 
