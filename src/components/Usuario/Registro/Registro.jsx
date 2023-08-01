@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import "./Registro.css"; 
 import styles from './Registro.module.css';
 import axios from "axios";
+import { urlBack } from "../../../redux/actions/actions";
 
 const RegisterForm = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false); // Estado para controlar la ventana modal de registro exitoso
@@ -12,14 +13,14 @@ const RegisterForm = () => {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rol, setRol] = useState("");
-  const [picture, setPicture] = useState("");
+  const [rol, setRol] = useState("Usuario");
+
 
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
       // Validaciones de campos
-      if (!name || !nickname || !password || !rol || !email || !picture) {
+      if (!name || !nickname || !password || !email ) {
         setFormError("Por favor, completa todos los campos.");
         return;
       }
@@ -39,12 +40,12 @@ const RegisterForm = () => {
       password: password,
       rol: rol,
       email: email,
-      picture: picture,
+      
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/crearUsuario",
+        urlBack+"/crearUsuario",
         data
       );
       console.log("Respuesta del servidor:", response.data);
@@ -55,10 +56,7 @@ const RegisterForm = () => {
     }
   };
 
-  // const handleGoogleRegister = () => {
-  //   // Aquí puedes agregar la lógica para iniciar el proceso de registro con Google
-  //   // Por ejemplo, puedes redirigir al usuario a la página de registro con Google
-  // };
+
 
   
   return (
@@ -134,47 +132,25 @@ const RegisterForm = () => {
           <label htmlFor="rol" className={styles['form-label']}>
             Rol
           </label>
-          <select
-            className={`form-control ${!rol && styles['is-invalid']}`}
-            id="rol"
-            required
-            value={rol}
-            onChange={(e) => setRol(e.target.value)}
-          >
-            <option value="">Selecciona un rol</option>
-            <option value="usuario">Usuario</option>
-            <option value="admin">Administrador</option>
-            {/* Agrega más opciones de rol según tus necesidades */}
-          </select>
-          {!rol && <div className="invalid-feedback">Campo requerido</div>}
-        </div>
-        {/* imagen */}
-        <div className={styles['mb-3']}>
-          <label htmlFor="picture" className={styles['form-label']}>
-            Imagen de perfil
-          </label>
           <input
-            type="text"
-            className={`form-control ${!picture && styles['is-invalid']}`}
-            id="picture"
-            placeholder="Ingresa tu Foto"
-            required
-            value={picture}
-            onChange={(e) => setPicture(e.target.value)}
-          />
-          {!picture && <div className="invalid-feedback">Campo requerido</div>}
+              type="text"
+              className={`form-control ${!name && styles['is-invalid']}`}
+              id="rol"
+              // placeholder="tu  usuario"
+              disabled
+              value={rol}
+              // onChange={(e) => setName(e.target.value)}
+            />
+         
+        
         </div>
+        
+       
         <div className="d-grid gap-2">
           <button type="submit" className={`btn ${styles['btn-primary']}`}>
             Registrarse
           </button>
-          {/* <button
-            type="button"
-            className={`btn ${styles['btn-danger']}`}
-            onClick={handleGoogleRegister}
-          >
-            Registrarse con Google
-          </button> */}
+        
         </div>
       </form>
       <div className={styles['text-center mt-3']}>
