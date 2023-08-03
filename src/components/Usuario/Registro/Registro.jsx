@@ -1,12 +1,12 @@
 // RegisterForm.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import "./Registro.css"; 
 import styles from './Registro.module.css';
 import axios from "axios";
 import { urlBack } from "../../../redux/actions/actions";
 import NavBar from "../../navbar/navbar";
-
+import Footer from '../../Footer/Footer';
 
 const RegisterForm = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false); // Estado para controlar la ventana modal de registro exitoso
@@ -15,34 +15,70 @@ const RegisterForm = () => {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rol, setRol] = useState("Usuario");
+  // const [rol, setRol] = useState("");
+  const [picture, setPicture] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageName, setImageName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
 
-  const navigate = useNavigate()
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    validateForm();
+  }, [name, nickname, password, email, selectedImage, picture]);
+
+
+  
+  const validateForm = () => {
       // Validaciones de campos
-      if (!name || !nickname || !password || !email ) {
+      if (!name || !nickname || !password || !email || !picture || !imageName) {
         setFormError("Por favor, completa todos los campos.");
         return;
       }
-  
-      // Validación de correo electrónico
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        setFormError("El correo electrónico no es válido.");
+      if (!selectedImage && !picture) {
+        setFormError("Por favor, carga una imagen de perfil.");
         return;
       }
+  
+      // Additional validation for the picture URL
+      if (picture && !isValidImageUrl(picture)) {
+        setFormError("URL de imagen inválida. Asegúrate de proporcionar una URL válida o cargar una imagen local.");
+        return;
+      }
+  
+      // Clear the form error if any image option is provided
+      setFormError(null);
+    }
+
+    const isValidImageUrl = (url) => {
+      // Validate the image URL format using a regular expression or any other validation logic
+      // For simplicity, we are checking if the URL starts with "http://" or "https://"
+      return /^https?:\/\//i.test(url);
+    };
       
+    const isValidEmail = (email) => {
+      // Validación de correo electrónico
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+
+    }
+    
    
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      validateForm();
+
+      
     // Crear el objeto con la información a enviar por POST
     const data = {
       name: name,
       nickname: nickname,
       password: password,
-      rol: rol,
+      // rol: rol,
       email: email,
-      
+      picture: imageUrl,
     };
 
     try {
@@ -59,6 +95,33 @@ const RegisterForm = () => {
   };
 
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      setPicture(''); 
+    }
+  };
+
+  const handlePictureUrlChange = (e) => {
+    if (!selectedImage) {
+      setPicture(e.target.value);
+    }
+  };
+
+  const handlePicturePaste = (e) => {
+    if (!selectedImage) {
+      e.preventDefault();
+    }
+  };
+
+
+ 
+
+  // const handleGoogleRegister = () => {
+  //   // Aquí puedes agregar la lógica para iniciar el proceso de registro con Google
+  //   // Por ejemplo, puedes redirigir al usuario a la página de registro con Google
+  // };
 
   
   return (
@@ -131,22 +194,24 @@ const RegisterForm = () => {
           />
           {!password && <div className="invalid-feedback">Campo requerido</div>}
         </div>
-        {/* Rol */}
+       
+        {/* imagen */}
         <div className={styles['mb-3']}>
-          <label htmlFor="rol" className={styles['form-label']}>
-            Rol
+          <label htmlFor="imageUrl" className={styles['form-label']}>
+            Imagen de perfil (URL)
           </label>
           <input
-              type="text"
-              className={`form-control ${!name && styles['is-invalid']}`}
-              id="rol"
-              // placeholder="tu  usuario"
-              disabled
-              value={rol}
-              // onChange={(e) => setName(e.target.value)}
-            />
-         
-        
+            type="text"
+            className={`form-control ${(!selectedImage && !imageUrl) && styles['is-invalid']}`}
+            id="imageUrl"
+            placeholder="Ingresa la URL de la imagen de perfil"
+            required
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+          {(!selectedImage && !imageUrl) && (
+            <div className="invalid-feedback">Campo requerido</div>
+          )}
         </div>
         
        
@@ -196,6 +261,7 @@ const RegisterForm = () => {
       </div>
     )}
   </div>
+  <Footer/>
   </>
   );
 };

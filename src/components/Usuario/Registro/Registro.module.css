@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'BungeeSpice-Regular';
+  src: url('../Registro/Fonts/BungeeSpice-Regular.ttf') format('truetype'); 
+}
+
 /* Estilos base */
 .register-form-container {
   display: flex;
@@ -5,39 +10,52 @@
   align-items: center;
   height: 100vh;
   background-color: #f5f5f5;
-  
+  background-image: url('https://images.pexels.com/photos/1122865/pexels-photo-1122865.jpeg'); 
+  background-size: cover; 
+  background-position: center; 
 }
 
 .register-form-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   height: 90%;
+  border-left: 40px solid #ce5c1b;
+  box-shadow: 0px 0px 0px 10px #808080, 0px 0px 0px 20px #444444;
 }
+
 .form_registro{
-  height: 90%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 380px;
+  margin-left: 20px;
 }
 
 .register-form-title {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-family: "BungeeSpice-Regular";
+  font-size: 35px;
 }
 
-.register-form-card .form-control {
+/* imagen */
+/* .register-form-card .form-control {
   width: 100%;
   border-radius: 4px;
   border: 1px solid #ced4da;
   padding: 10px;
-  margin-bottom: 15px;
-}
+  margin-bottom: 10px;
+} */
 
 .register-form-card button {
   width: 100%;
@@ -47,14 +65,15 @@
   border-radius: 4px;
   color: #ffffff;
   cursor: pointer;
+  
 }
 
 .register-form-card button.btn-primary {
-  background-color: #007bff;
+  background-color: #cb2162;
 }
 
 .register-form-card button.btn-danger {
-  background-color: #dc3545;
+  background-color: #cb2162;
   margin-top: 0;
 }
 
@@ -91,101 +110,26 @@
   margin-bottom: 5px;
 }
 
-/* Estilos responsivos */
-@media screen and (max-width: 768px) {
-  .register-form-card {
-    max-width: 100%;
-  }
 
-  /* Ajustar el ancho de los inputs en una columna */
-  .register-form-card .form-row .form-group {
-    flex: 100%;
-  }
-}
-/* Estilos base */
-.register-form-container {
+.image-input-group {
   display: flex;
-  justify-content: center;
+  flex-direction: column; 
   align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  gap: 20px; 
 }
 
-.register-form-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-}
-
-.register-form-title {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.register-form-card .form-control {
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-
-.register-form-card button {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.register-form-card button.btn-primary {
-  background-color: #007bff;
-}
-
-.register-form-card button.btn-danger {
-  background-color: #dc3545;
-  margin-top: 0;
-}
-
-.text-center {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 0.875rem;
-  color: #6c757d;
-}
-
-.text-center a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.text-center a:hover {
-  text-decoration: underline;
-}
-
-/* Estilos para mostrar algunos inputs en dos columnas */
-.register-form-card .form-row {
+.form-control-file {
   display: flex;
-  gap: 15px;
+   
 }
 
-.register-form-card .form-row .form-group {
-  flex: 1;
+/* URL input */
+#pictureUrl {
   display: flex;
-  flex-direction: column;
 }
 
-.register-form-card .form-group .form-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+
+
 
 /* Estilos responsivos */
 @media screen and (max-width: 768px) {
@@ -198,5 +142,6 @@
     flex: 100%;
   }
 }
+
 
 
