@@ -15,16 +15,16 @@ function Footer() {
             </Typography>
             <ul className="footer-links">
               <li>
-                <a href="#">Acerca de nosotros</a>
+                <a href="/aboutus">Acerca de nosotros</a>
               </li>
               <li>
-                <a href="#">Contacto</a>
+                <a href="/contacto">Contacto</a>
               </li>
               <li>
-                <a href="#">Términos y condiciones</a>
+                <a href="/terms">Términos y condiciones</a>
               </li>
               <li>
-                <a href="#">Política de privacidad</a>
+                <a href="/privacidad">Política de privacidad</a>
               </li>
             </ul>
           </div>
@@ -69,7 +69,7 @@ function Footer() {
         </div>
       </Container>
       <div className="footer-bottom">
-        <Typography variant="body2">&copy; 2023 E-comerce books. Todos los derechos reservados.</Typography>
+        <Typography variant="body2">&copy; 2023 BookClub. Todos los derechos reservados.</Typography>
       </div>
     </footer>
   );
