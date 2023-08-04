@@ -11,7 +11,7 @@ import NotFoundPage from './components/NotFound/NotFound';
 import FormC from './components/FormIngresoC/form.jsx';
 import Detail from './components/Detail/Detail.jsx';
 import Carrito from "./components/Carrito/Carrito/Carrito";
-
+import AboutUs from './components/Footer/AboutUs';
 import AgregaLibro from './components/FormIngresoC/AgregarLibroForm.jsx';
 import { obtener_Todos_Libros, obtenerGeneros } from './redux/actions/actions';
 import Admin from './components/Admin/Admin';
@@ -19,6 +19,7 @@ import Admin from './components/Admin/Admin';
 // user
 import LoginForm from './components/Usuario/Login/Login';
 import RegisterForm from './components/Usuario/Registro/Registro';
+import Privacidad from './components/Footer/Privacidad';
 
 
 document.title = "Book Club";
@@ -86,6 +87,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
         <Route path="/*" element={<NotFoundPage/>} />
+        <Route path="/privacidad" element={<Privacidad/>} />
       </Routes>
     </div>
   );

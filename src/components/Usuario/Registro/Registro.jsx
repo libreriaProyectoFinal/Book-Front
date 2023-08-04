@@ -98,20 +98,11 @@ const RegisterForm = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setSelectedImage(file);
-      setPicture(''); 
-    }
-  };
-
-  const handlePictureUrlChange = (e) => {
-    if (!selectedImage) {
-      setPicture(e.target.value);
-    }
-  };
-
-  const handlePicturePaste = (e) => {
-    if (!selectedImage) {
-      e.preventDefault();
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -197,22 +188,26 @@ const RegisterForm = () => {
        
         {/* imagen */}
         <div className={styles['mb-3']}>
-          <label htmlFor="imageUrl" className={styles['form-label']}>
-            Imagen de perfil (URL)
-          </label>
-          <input
-            type="text"
-            className={`form-control ${(!selectedImage && !imageUrl) && styles['is-invalid']}`}
-            id="imageUrl"
-            placeholder="Ingresa la URL de la imagen de perfil"
-            required
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          />
-          {(!selectedImage && !imageUrl) && (
-            <div className="invalid-feedback">Campo requerido</div>
-          )}
+      <label htmlFor="imageInput" className={styles['form-label']}>
+        Imagen de perfil
+      </label>
+      <input
+        type="file"
+        className={`form-control ${!selectedImage && styles['is-invalid']}`}
+        id="imageInput"
+        accept="image/*"
+        required
+        onChange={handleImageChange}
+      />
+      {!selectedImage && (
+        <div className="invalid-feedback">Campo requerido</div>
+      )}
+      {selectedImage && (
+        <div>
+          <img src={selectedImage} alt="Imagen de perfil" />
         </div>
+      )}
+    </div>
         
        
         <div className="d-grid gap-2">
