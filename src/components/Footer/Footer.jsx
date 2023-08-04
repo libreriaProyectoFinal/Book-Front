@@ -4,34 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import './Footer.css';
 
-  // -----------------------''-----------''--------------------
-
-  // -Acerca: component sobre nosotros(equipo)
-
-  // -Politica/Privacidad: component de texto explicativo de la pagina
-
-  // ---------------------------^^crear un component^^---------
-  const handlerDireccionContacto = () => {
-    const url = 'https://chat.whatsapp.com/IBQNBZ3lquIDqBSfcGYHy4';
-    window.location.href = url;
-  };
-  const handlerDireccionAyuda = () => {
-    const url = 'https://chat.whatsapp.com/IBQNBZ3lquIDqBSfcGYHy4';
-    window.location.href = url;
-  };
-  const handlerDireccionFacebook = () => {
-    const url = 'https://www.facebook.com/';
-    window.location.href = url;
-  };
-  const handlerDireccionTwitter = () => {
-    const url = 'https://twitter.com/?lang=es';
-    window.location.href = url;
-  };
-  const handlerDireccionInstagram = () => {
-    const url = 'https://www.instagram.com/';
-    window.location.href = url;
-  };
-
 function Footer() {
   return (
     <footer className="footer">
@@ -43,20 +15,16 @@ function Footer() {
             </Typography>
             <ul className="footer-links">
               <li>
-                <a href="/aboutus">Acerca de nosotros</a>
+                <a href="#">Acerca de nosotros</a>
               </li>
               <li>
-<<<<<<< HEAD
-                <a href="#"onClick={handlerDireccionContacto}>Contacto</a>
-=======
-                <a href="/contacto">Contacto</a>
+                <a href="#">Contacto</a>
               </li>
               <li>
-                <a href="/terms">Términos y condiciones</a>
->>>>>>> b9fb51a5201486131b3f2d0ecfe37ade7080e8f3
+                <a href="#">Términos y condiciones</a>
               </li>
               <li>
-                <a href="/privacidad">Política de privacidad</a>
+                <a href="#">Política de privacidad</a>
               </li>
             </ul>
           </div>
@@ -66,7 +34,10 @@ function Footer() {
             </Typography>
             <ul className="footer-links">
               <li>
-                <a href="#"onClick={handlerDireccionAyuda}>Ayuda y soporte</a>
+                <a href="#">Preguntas frecuentes</a>
+              </li>
+              <li>
+                <a href="#">Ayuda y soporte</a>
               </li>
               <li>
                 <a href="#">Envíos y devoluciones</a>
@@ -79,17 +50,17 @@ function Footer() {
             </Typography>
             <ul className="footer-social">
               <li>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" onClick={handlerDireccionFacebook}>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faFacebook} />
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" onClick={handlerDireccionTwitter}>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faTwitter} />
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" onClick={handlerDireccionInstagram}>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faInstagram} />
                 </a>
               </li>
@@ -98,7 +69,7 @@ function Footer() {
         </div>
       </Container>
       <div className="footer-bottom">
-        <Typography variant="body2">&copy; 2023 BookClub. Todos los derechos reservados.</Typography>
+        <Typography variant="body2">&copy; 2023 E-comerce books. Todos los derechos reservados.</Typography>
       </div>
     </footer>
   );
