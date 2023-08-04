@@ -46,7 +46,14 @@ function Footer() {
                 <a href="/aboutus">Acerca de nosotros</a>
               </li>
               <li>
+<<<<<<< HEAD
                 <a href="#"onClick={handlerDireccionContacto}>Contacto</a>
+=======
+                <a href="/contacto">Contacto</a>
+              </li>
+              <li>
+                <a href="/terms">Términos y condiciones</a>
+>>>>>>> b9fb51a5201486131b3f2d0ecfe37ade7080e8f3
               </li>
               <li>
                 <a href="/privacidad">Política de privacidad</a>
