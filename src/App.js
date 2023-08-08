@@ -20,6 +20,10 @@ import Admin from './components/Admin/Admin';
 import LoginForm from './components/Usuario/Login/Login';
 import RegisterForm from './components/Usuario/Registro/Registro';
 import Privacidad from './components/Footer/Privacidad';
+import UsuarioPerfilPagina from './components/perfil/perfil';
+import ComprasUsuario from './components/Compras/Compras';
+import Success from './components/Carrito/Success/Success';
+import Failure from './components/Carrito/Failure/Failure';
 
 
 document.title = "Book Club";
@@ -85,6 +89,10 @@ function App() {
         <Route path="/agregalibro" element={<AgregaLibro />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/perfil/:id" element={<UsuarioPerfilPagina />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/failure" element={<Failure />} />
+        <Route path="/comprasusuario/:idusuario" element={<ComprasUsuario /> } />
         {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
         <Route path="/*" element={<NotFoundPage/>} />
         <Route path="/privacidad" element={<Privacidad/>} />

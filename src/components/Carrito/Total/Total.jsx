@@ -23,16 +23,15 @@ export function showMessage(message, url) {
 export default function Total({ productos, sumatotal }) {
 
  const dispatch = useDispatch();
-      const [mensaje, setMensaje] = useState(""); 
-      const [modalIsOpen, setModalIsOpen] = useState(false);
-      const [urlPago, setUrlPago] = useState("");
 
       const handleCompra = async () => {
-
-     const loginuser = "claudiodavid339@gmail.com";
-     const hashvalidacionpago = "AUN_NO";
-     const valortotaloc = sumatotal;
-     const estadooc = "pendiente";
+        const user = localStorage.getItem("user");
+        const dataUser = JSON.parse(user);
+    
+        const loginuser = dataUser.user.email;
+        const hashvalidacionpago = "AUN_NO";
+        const valortotaloc = sumatotal;
+        const estadooc = "pendiente";
 
       const detalleocx = productos.map((producto) => ({
         idlibro: producto.idlibro,
@@ -43,22 +42,17 @@ export default function Total({ productos, sumatotal }) {
       }));
       const body = { loginuser, hashvalidacionpago, valortotaloc, estadooc, detalleocx, };
       try {
-        const response = await axios.post(urlBack + "/generar-orden", body);
+        const response = await axios.post(urlBack + "/generar-orden", body, {
+          headers: { Authorization: dataUser.accessToken },
+        });
+        console.log('deda de oc generada: ', response.data)
         const urlPago = response.data.URLo;
-        setUrlPago(urlPago);
-        setModalIsOpen(true);
-       // showMessage("Orden de compra generada. Haz clic en el enlace para pagar: ", urlPago);          
-       //  console.log('body: ', body);
-       //  showMessage(" Pago realizado exitosamente.: "+ body.data+'..'); 
-       //  console.log('Respuesta: ' ,response.data, '.'); // Handle the response as needed
-       //  console.log('body: ' ,body.data, '.'); 
-
-       /**limpio el carro */
-       //dispatch(limpiarCarrito());
-
-        } catch (error) {       
-           console.error(error);  
-        }
+      
+        // Redirigir a la URL de pago
+        window.location.href = urlPago;
+      } catch (error) {
+        console.error(error);
+      }
   };
   
   const reiniciaCarro= ()=> { 
@@ -70,10 +64,7 @@ export default function Total({ productos, sumatotal }) {
   // dispatch(limpiarCarrito());
   
  }
-   
-  const closeModal = () => {
-   setModalIsOpen(false);
- };
+
 
   return (
     <div className={s.fondo}>
@@ -88,14 +79,7 @@ export default function Total({ productos, sumatotal }) {
       <button className={s.button} onClick={handleCompra}>
         <span>Comprar</span>
       </button>
-      <Modal  isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="URL de Pago" >
-        <h2>Pago realizado exitosamente</h2>
-        <p>Haz clic en el enlace para pagar:</p>
-        <a href={urlPago}>{urlPago}</a>
-        <button onClick={closeModal}>Cerrar</button>        
-      </Modal>
+     
     </div>
   );
 }

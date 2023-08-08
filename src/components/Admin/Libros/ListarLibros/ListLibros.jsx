@@ -3,7 +3,7 @@ import axios from "axios";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./ListLibros.css";
 import { useDispatch } from "react-redux";
-import { obtener_Todos_Libros } from "../../../redux/actions/actions";
+import { obtener_Todos_Libros } from "../../../../redux/actions/actions";
 
 const LibroList = ({ libro, borrarLibro }) => {
 

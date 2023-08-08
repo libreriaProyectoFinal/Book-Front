@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { obtener_Todos_Libros } from '../../../redux/actions/actions';
+import { obtener_Todos_Libros } from '../../../../redux/actions/actions';
 
 const cloudName = "dmjkjz1oa";
 const back_url ="https://book-back-libreriaproyectofinal.vercel.app" 
