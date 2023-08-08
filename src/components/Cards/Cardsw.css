@@ -1,3 +1,7 @@
+.cards-container{
+  display: flex;
+  justify-content: space-evenly;
+}
 .card {
     width: 100%;
     max-width: 300px;

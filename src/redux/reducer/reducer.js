@@ -20,6 +20,7 @@ const initialState = {
     PaginaActual: 1,
     localizaciones: [],
     user:null,
+    usuarios:[],
 }
 /* waldir
     case "GET_ALL_PRODUCTS":
@@ -232,6 +233,12 @@ const rootReducer = (state = initialState,{ type, payload }) => {
               ...state,
               user: null,
           };
+          case 'USUARIOS':
+            return {
+                ...state,
+                usuarios: payload,
+            };
+    
   
 
 

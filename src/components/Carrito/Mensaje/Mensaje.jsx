@@ -9,7 +9,7 @@ export default function Mensaje() {
       <p>
         ¿No sabés qué comprar? ¡Miles de libros te esperan!
       </p>
-      <Link to={"/"}>
+      <Link to={"/home"}>
         <button>Explorar Mas</button>
       </Link>
     </div>

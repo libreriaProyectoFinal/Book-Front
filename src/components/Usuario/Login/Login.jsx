@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import "./Login.css";
 import styles from './Login.module.css';
-import { loginUser } from "../../../redux/actions/actions";
+import { loginUser, urlBack } from "../../../redux/actions/actions";
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import NavBar from "../../navbar/navbar";
 
-const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
+// const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
 const firebaseConfig = {
   apiKey: "AIzaSyDsWr0rA7m8n9MpkZyBbWxS8wda0Qp9KJQ",

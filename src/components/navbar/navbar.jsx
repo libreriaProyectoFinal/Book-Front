@@ -104,7 +104,7 @@ const loadUserFromLocalStorage = () => {
                 )}
                  <li className="nav-item perfilUsuario">
                   {/* Agregar la clase CSS "username-link" al enlace del nombre de usuario */}
-                  <Link className="nav-link username-link" to="/perfil">
+                  <Link className="nav-link username-link" to={"/perfil/"+ user.idusuario}>
                     {/* Usar una etiqueta <span> para aplicar el estilo de la clase resaltada */}
                     <span className="primer_span"> <img className="img_usuario" src={user.picture} alt="" /> : {user.name}</span>
                    

@@ -1,86 +1,102 @@
-import React, { useState, useEffect }  from 'react';
-import { Contenedor, Tit, Img, Btn } from './styled.Detail.js';
-import { useParams , useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { agregaCarrito } from '../../redux/actions/actions';
-import { obtieneDetalleLibro } from '../../redux/actions/actions.js'
-import { Link } from "react-router-dom";
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
+import axios from "axios";
+import "./Detail.css";
+import NavBar from "../navbar/navbar.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { agregaCarrito, urlBack } from "../../redux/actions/actions.js";
+import MensajeAgregado from "./MensajeAgregadoCarrito/Mensaje.jsx";
 
 function Detail() {
-  let  { idl } = useParams();
+  const dispatch = useDispatch();
   const [libro, setLibro] = useState({});
-
   const carrito = useSelector((state) => state.carrito);
- 
+  let { idl } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();  
- console.log('idl:', idl ,'-');
+  console.log("idl:", idl, "-");
 
- const libroDetail = useSelector( (state) => state.details );
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMensaje, setPopupMensaje] = useState("");
 
-  // Actualiza el estado 'libro' con los datos de 'libroDetail'
   useEffect(() => {
-   setLibro(libroDetail);
- }, [libroDetail]); 
+    const obtenerDetalleLibro = async () => {
+      try {
+        const response = await axios.get(urlBack + `/obtenerLibroId/${idl}`);
+        const data = response.data;
+        console.log(data);
+        if (data.id === idl) {
+          setLibro(data);
+        } else {
+          window.alert("No hay Libro con ese ID");
+          navigate(-1); // Redirigir al usuario de vuelta a la página anterior si no se encuentra el libro
+        }
+      } catch (error) {
+        window.alert("Error al obtener el detalle del libro");
+        console.error(error);
+        navigate(-1); // Redirigir al usuario de vuelta a la página anterior en caso de error
+      }
+    };
 
- const { id, nombrelibro, desclibro, nombreautor, preciolibro, displibro, fotolibro } = libro;
+    obtenerDetalleLibro();
+  }, [idl, navigate]);
 
-  console.log('idparams', libro.id);
-  console.log('nombrelibro:',libro.nombrelibro);
-  console.log('desclibro:',libro.desclibro);
-
-
- 
-   useEffect( 
-    () =>{ dispatch ( obtieneDetalleLibro(idl) )  }, [idl] );
-
-
-  //########### EL HANDLE DE AGREGAR PRODUCTO AL CARRITO ##############
   function handleSubmit(e) {
+    const productExists = carrito.some((libro) => libro.id === idl);
+    if (productExists) {
+      alert("Este producto ya está en el carrito.");
+      return;
+    }
 
-     const productExists = carrito.some((libro) => libro.id === id);
-     if (productExists) { alert("Este producto ya está en el carrito.");
-       return; 
-     }
+    const librosAgregar = {
+      idlibro: libro.id,
+      imagen: libro.fotolibro,
+      nombrelibro: libro.nombrelibro,
+      preciolibro: libro.preciolibro,
+      cantidad: 1,
+      subtotalitem: 1 * libro.preciolibro,
+    };
 
-   const librosAgregar = {
-     idlibro: id,
-     imagen: fotolibro,
-     nombrelibro: nombrelibro,
-     preciolibro: preciolibro, 
-     cantidad: 1,
-     subtotalitem: (1 * preciolibro)
-   };
+    dispatch(agregaCarrito(librosAgregar));
 
-   dispatch( agregaCarrito( librosAgregar ));
-   
-   alert(`Agregaste el libro ${nombrelibro} a tu carrito`);
- }
-
+    setPopupMensaje(`Agregaste el libro ${libro.nombrelibro} a tu carrito`);
+    setShowPopup(true);
+  }
 
   return (
-  <div>
-
-     <Contenedor >
-        {/* <Btn onClick={handleGoBack}>Volver</Btn> */}
-        <Img src={fotolibro} />
-        <Tit>id: {id}</Tit>
-        <Tit>Titulo: {nombrelibro}</Tit>
-        <Tit>Descripcion: {desclibro}</Tit>
-        <Tit>Nota Biografica {nombreautor}</Tit>
-        <Tit>Precio: $ {preciolibro}</Tit>
-        <Tit>Disp Stock: {displibro}</Tit>
-         {/* <Tit>Temperamentos: {libro.temperament}</Tit>
-        <Tit>Años de Vida: {libro.life_span}</Tit> */}
-       <button  onClick={ () => handleSubmit() }     style={{ fontSize: '24px', padding: '15px 30px' }}>
-          Agregar a carrito
-       </button>
-     </Contenedor>
-   
-  </div>
- );
+    <div>
+      <NavBar />
+      <div className="contenedor">
+        <div className="texto">
+          <h3 className="titulo">Título: {libro.nombrelibro}</h3>
+          <h3 className="descripcion">Descripción: {libro.desclibro}</h3>
+          <h3 className="autor">Autor: {libro.autor?.nombreautor}</h3>
+          <h3 className="precio">Precio: $ {libro.preciolibro}</h3>
+          <h3 className="stock">Disp Stock: {libro.displibro}</h3>
+          <button
+            className="agregar-carrito-btn"
+            onClick={() => handleSubmit()}
+          >
+            Agregar a carrito
+          </button>
+        </div>
+        <img className="img" src={libro.fotolibro} alt="" />
+      </div>
+      <MensajeAgregado
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        mensaje={`Agregaste el libro "${libro.nombrelibro}" a tu carrito.`}
+        onContinuar={() => {
+          setShowPopup(false);
+          navigate("/home");
+        }}
+        onIrACarrito={() => {
+          setShowPopup(false);
+          navigate("/carrito"); // Redirigir al carrito
+        }}
+      />
+    </div>
+  );
 }
 
 export default Detail;

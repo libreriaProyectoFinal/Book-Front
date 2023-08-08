@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Cardsw.css'
-import Cardw from '../Card/Cardw';
+import Cardw from '../card/Cardw';
 
 const Cardsw = ({ books }) => {
  if (!books) {

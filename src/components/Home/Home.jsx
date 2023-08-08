@@ -5,9 +5,9 @@ import './Home.css'
 import Pagination from '../Paginate/Paginate';
 import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux/actions/actions';
 import NavBar from '../navbar/navbar';
-import Cardsw from '../Cards/Cardsw';
 import Footer from './../Footer/Footer';
 import Filtros from './FiltroLibros/Filtros';
+import Cardsw from '../cards/Cardsw';
 // import NavBar from '../navbar/navbar';
 
 const Home = () => {
