@@ -15,54 +15,55 @@ const RegisterForm = () => {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [rol, setRol] = useState("");
-  const [picture, setPicture] = useState("");
+  // const [picture, setPicture] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageName, setImageName] = useState("");
+  // const [imageName, setImageName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  // const [submitButtonText, setSubmitButtonText] = useState("Registrarse");
 
 
   const navigate = useNavigate();
 
   useEffect(() => {
     validateForm();
-  }, [name, nickname, password, email, selectedImage, picture]);
+  }, [name, nickname, password, email]);
 
 
   
   const validateForm = () => {
       // Validaciones de campos
-      if (!name || !nickname || !password || !email || !picture || !imageName) {
+      if (!name || !nickname || !password || !email  ) {
         setFormError("Por favor, completa todos los campos.");
         return;
       }
-      if (!selectedImage && !picture) {
+      if (!selectedImage ) {
         setFormError("Por favor, carga una imagen de perfil.");
         return;
       }
   
       // Additional validation for the picture URL
-      if (picture && !isValidImageUrl(picture)) {
-        setFormError("URL de imagen inválida. Asegúrate de proporcionar una URL válida o cargar una imagen local.");
-        return;
-      }
+      // if (picture && !isValidImageUrl(picture)) {
+      //   setFormError("URL de imagen inválida. Asegúrate de proporcionar una URL válida o cargar una imagen local.");
+      //   return;
+      // }
   
       // Clear the form error if any image option is provided
       setFormError(null);
     }
 
-    const isValidImageUrl = (url) => {
-      // Validate the image URL format using a regular expression or any other validation logic
-      // For simplicity, we are checking if the URL starts with "http://" or "https://"
-      return /^https?:\/\//i.test(url);
-    };
+    // const isValidImageUrl = (url) => {
+    //   // Validate the image URL format using a regular expression or any other validation logic
+    //   // For simplicity, we are checking if the URL starts with "http://" or "https://"
+    //   return /^https?:\/\//i.test(url);
+    // };
       
-    const isValidEmail = (email) => {
-      // Validación de correo electrónico
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailPattern.test(email);
+    // const isValidEmail = (email) => {
+    //   // Validación de correo electrónico
+    //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //   return emailPattern.test(email);
 
-    }
+    // }
     
    
     const handleSubmit = async (e) => {
@@ -76,9 +77,9 @@ const RegisterForm = () => {
       name: name,
       nickname: nickname,
       password: password,
-      // rol: rol,
+      rol: 'usuario',
       email: email,
-      picture: imageUrl,
+      picture: imageUrl || "https://img.freepik.com/vector-premium/icono-circulo-usuario-anonimo-ilustracion-vector-estilo-plano-sombra_520826-1931.jpg",
     };
 
     try {
@@ -88,7 +89,7 @@ const RegisterForm = () => {
       );
       console.log("Respuesta del servidor:", response.data);
       setSuccessModalOpen(true); 
-      // Navigate("/login");
+      navigate("/login");
     } catch (error) {
       console.error("Error al enviar los datos del formulario:", error);
     }
@@ -98,21 +99,32 @@ const RegisterForm = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
+      
+        setSelectedImage(file);
+        uploadImageToCloudinary(file);
       };
-      reader.readAsDataURL(file);
-    }
+   
   };
 
+  const uploadImageToCloudinary = async (file) => {
+    const cloudName = "dmjkjz1oa";
+    setIsUploadingImage(true);
 
- 
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "shoppie"); // Replace with your upload preset
 
-  // const handleGoogleRegister = () => {
-  //   // Aquí puedes agregar la lógica para iniciar el proceso de registro con Google
-  //   // Por ejemplo, puedes redirigir al usuario a la página de registro con Google
-  // };
+    try {
+    
+      const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData);
+      console.log(response.data)
+      setImageUrl(response.data.url);
+    } catch (error) {
+      console.error("Error al subir la imagen a Cloudinary:", error);
+    }
+
+    setIsUploadingImage(false);
+  };
 
   
   return (
@@ -188,34 +200,35 @@ const RegisterForm = () => {
        
         {/* imagen */}
         <div className={styles['mb-3']}>
-      <label htmlFor="imageInput" className={styles['form-label']}>
-        Imagen de perfil
-      </label>
-      <input
-        type="file"
-        className={`form-control ${!selectedImage && styles['is-invalid']}`}
-        id="imageInput"
-        accept="image/*"
-        required
-        onChange={handleImageChange}
-      />
-      {!selectedImage && (
-        <div className="invalid-feedback">Campo requerido</div>
-      )}
-      {selectedImage && (
-        <div>
-          <img src={selectedImage} alt="Imagen de perfil" />
-        </div>
-      )}
-    </div>
+              <label htmlFor="imageInput" className={styles['form-label']}>
+                Imagen de perfil
+              </label>
+              <input
+                type="file"
+                className={`form-control ${!selectedImage && styles['is-invalid']}`}
+                id="imageInput"
+                accept="image/*"
+          
+                onChange={handleImageChange}
+              />
+              {/* {!selectedImage && <div className="invalid-feedback">Campo requerido</div>} */}
+              {selectedImage && (
+                <div>
+                  <img src={URL.createObjectURL(selectedImage)} alt="Imagen de perfil" />
+                </div>
+              )}
+            </div>
         
        
-        <div className="d-grid gap-2">
-          <button type="submit" className={`btn ${styles['btn-primary']}`}>
-            Registrarse
-          </button>
-        
-        </div>
+            <div className="d-grid gap-2">
+              <button
+                type="submit"
+                className={`btn ${styles['btn-primary']}`}
+                disabled={isUploadingImage}
+              >
+                {isUploadingImage ? "Subiendo imagen..." : "Registrarse"}
+              </button>
+            </div>
       </form>
       <div className={styles['text-center mt-3']}>
         <Link to="/login">¿Ya tienes una cuenta? Iniciar sesión aquí</Link>
