@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { urlBack } from '../../redux/actions/actions';
 import axios from 'axios';
 import UsuarioPerfil from './UsuarioPerfil/UsuarioPerfil';
-import NavBar from '../navbar/navbar';
+
 import styles from './perfil.module.css'; 
+import NavBar from '../Navbar/Navbar';
 const UsuarioPerfilPagina = () => {
   const { id } = useParams();
   const [userPerfil, setUserPerfil] = useState(null);
