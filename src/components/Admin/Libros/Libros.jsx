@@ -9,7 +9,7 @@ import './Libros.css'
 import FiltrosLibros from "./FiltrosLibros/FiltrosLibros";
 
 import PaginationAdmin from "./FiltrosLibros/PaginateLibros";
-
+export const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
 const customStyles = {
     content: {
@@ -79,7 +79,7 @@ function AdminLibros() {
 
         console.log(id);
         axios
-          .patch(`http://localhost:3001/borradoLibro/${id}`)
+          .patch(urlBack+`/borradoLibro/${id}`)
           .then((response) => {
             if (response.status === 200) {
               // Realizar cualquier acción necesaria después de borrar el libro
