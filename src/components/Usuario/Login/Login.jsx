@@ -9,7 +9,8 @@ import { loginUser, urlBack } from "../../../redux/actions/actions";
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import NavBar from "../../navbar/navbar";
+import NavBar from "../../Navbar/Navbar";
+
 
 // const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 

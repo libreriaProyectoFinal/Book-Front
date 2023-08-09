@@ -1,7 +1,8 @@
 import React from 'react';
-import NavBar from '../navbar/navbar';
+
 import Footer from '../Footer/Footer';
 import styles from "./Privacidad.css";
+import NavBar from '../Navbar/Navbar';
 
 const Privacidad = () => {
     return (
