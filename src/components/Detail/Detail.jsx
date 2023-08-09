@@ -7,7 +7,7 @@ import "./Detail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { agregaCarrito, urlBack } from "../../redux/actions/actions.js";
 import MensajeAgregado from "./MensajeAgregadoCarrito/Mensaje.jsx";
-import NavBar from "../Navbar/Navbar";
+import NavBar from "../navbar/navbar";
 
 function Detail() {
   const dispatch = useDispatch();
