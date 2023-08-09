@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './Home.css'
 import Pagination from '../Paginate/Paginate';
 import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux/actions/actions';
-import NavBar from '../navbar/navbar';
+import NavBar from '../Navbar/Navbar';
 import Footer from './../Footer/Footer';
 import Filtros from './FiltroLibros/Filtros';
 import Cardsw from '../Cards/Cardsw';

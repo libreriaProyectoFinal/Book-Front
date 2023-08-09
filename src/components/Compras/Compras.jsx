@@ -5,7 +5,7 @@ import { urlBack } from '../../redux/actions/actions';
 import { useParams } from 'react-router-dom';
 import ModalDetalleCompra from './ModalDetalleCompra/ModalDetalleCompra'; // Importar el nuevo componente
 import styles from './Compras.module.css';
-import NavBar from '../navbar/navbar';
+import NavBar from '../Navbar/Navbar';
 
 
 

@@ -9,7 +9,7 @@ import { loginUser, urlBack } from "../../../redux/actions/actions";
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import NavBar from "../../navbar/navbar";
+import NavBar from "../../Navbar/Navbar";
 
 // const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" 
 
@@ -163,32 +163,38 @@ useEffect(() => {
      // Iniciar sesión con Google utilizando Firebase Authentication
      const result = await signInWithPopup(auth, provider);
      const idToken =await result.user.getIdToken();
-     console.log(result)
-console.log(idToken)
-      try {
-        // Enviar el idToken al servidor utilizando Axios o cualquier otra biblioteca de solicitudes HTTP
-        const response = await axios.post(urlBack+'/login/google', { idToken });
+    
+     try {
+      // Enviar el idToken al servidor utilizando Axios o cualquier otra biblioteca de solicitudes HTTP
+      const response = await axios.post(urlBack+'/login/google', { idToken });
+      // Comprobar la respuesta del servidor y mostrar el mensaje correspondiente
+      console.log(response.data)
+      if (response.data.user.tipoUsuario.rol === 'usuario') {
+        // Guardar la información del usuario en el Local Storage
+      
+        // console.log(response.data.accessToken)
+        storeUserInLocalStorage(response.data.user, response.data.accessToken);
 
-        // Comprobar la respuesta del servidor y mostrar el mensaje correspondiente
-        if (response.data.user.rol === 'admin') {
-          setUseremail(result.user.name);
-          setModalMessage('Es administrador');
-          setShowModal(true);
-          dispatch(loginUser(response.data.user)); // Guardar la información del usuario en el estado global
-          setShowRedirectMessage(true);
-        } else {
-          setUseremail(result.user.name);
-          setModalMessage('Es usuario');
-          setShowModal(true);
-          dispatch(loginUser(response.data.user)); // Guardar la información del usuario en el estado global
-          setShowRedirectMessage(true);
-        }
-      } catch (error) {
-        // Manejar errores en caso de fallo en la solicitud POST
-        console.error('Error al iniciar sesión:', error);
-        setModalMessage('Error al iniciar sesión');
+        setUseremail(response.data.user.name);
+        setModalMessage(response.data.user.tipoUsuario.rol === 'admin' ? 'Es administrador' : 'Es usuario');
         setShowModal(true);
+        dispatch(loginUser(response.data.user)); // Guardar la información del usuario en el estado global
+        setShowRedirectMessage(true);
       }
+     
+    } catch (error) {
+       // Manejar errores en caso de fallo en la solicitud POST
+    if (error.response && error.response.status === 401) {
+     
+      setModalMessage(error.response.data.error);
+    setShowModal(true);
+    } else {
+      
+      setModalMessage('Error al iniciar Sessiòn ');
+    setShowModal(true);
+    }
+    
+    }
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
     }

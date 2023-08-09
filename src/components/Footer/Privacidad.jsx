@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../navbar/navbar';
+import NavBar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import styles from "./Privacidad.css";
 

@@ -15,9 +15,12 @@ const UsuarioPerfil = ({ user }) => {
         <h2 className={styles.profileDetail}>{user.name}</h2>
         <p className={styles.profileDetail}>Email: <strong> {user.email}</strong> </p>
         <p className={styles.profileDetail}>Nickname: <strong>{user.nickname}</strong> </p>
+        {user.tipoUsuario.rol ==='usuario' &&
+        
         <Link className="btn btn-info text-light" to={`/comprasusuario/${user.idusuario}`}>
                Mis compras
               </Link>
+        }
        
         
       </div>
