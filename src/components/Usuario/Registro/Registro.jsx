@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './Registro.module.css';
 import axios from "axios";
 import { urlBack } from "../../../redux/actions/actions";
-import NavBar from "../../Navbar/Navbar";
+import NavBar from "../../navbar/navbar";
 import Footer from '../../Footer/Footer';
 
 const RegisterForm = () => {

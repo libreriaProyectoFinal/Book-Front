@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { urlBack } from '../../redux/actions/actions';
 import axios from 'axios';
 import UsuarioPerfil from './UsuarioPerfil/UsuarioPerfil';
-import NavBar from '../Navbar/Navbar';
+import NavBar from '../navbar/navbar';
 import styles from './perfil.module.css'; 
 const UsuarioPerfilPagina = () => {
   const { id } = useParams();
