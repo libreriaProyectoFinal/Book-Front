@@ -5,7 +5,7 @@ import Mensaje from "../Mensaje/Mensaje";
 import Seleccion from "../Seleccion/Seleccion";
 import { updateCarrito } from "../../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
-import NavBar from "../../navbar/navbar";
+import NavBar from "../../Navbar/Navbar";
 
 const Carrito = () => {
 

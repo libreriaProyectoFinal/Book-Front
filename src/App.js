@@ -5,7 +5,6 @@ import './App.css';
 import Home from './components/Home/Home.jsx';
 import librosJSON from './libros.json';
 import axios from 'axios';
-import NavBar from './components/Nav/Nav';
 import LandingPage from './components/LandingPage/LandingPage';
 import NotFoundPage from './components/NotFound/NotFound';
 import FormC from './components/FormIngresoC/form.jsx';

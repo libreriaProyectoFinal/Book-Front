@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { obtener_Todos_Libros } from '../../../../redux/actions/actions';
+import { obtener_Todos_Libros, urlBack } from '../../../../redux/actions/actions';
 
 const cloudName = "dmjkjz1oa";
-const back_url ="https://book-back-libreriaproyectofinal.vercel.app" 
+// const back_url ="https://book-back-libreriaproyectofinal.vercel.app" 
 
 
 const AgregarLibroModal = ({ show, handleClose }) => {
@@ -86,17 +86,22 @@ const AgregarLibroModal = ({ show, handleClose }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const user = localStorage.getItem('user');
+      const dataUser = JSON.parse(user);
+
     // Realizar las validaciones aquí
     const errors = validateFormData(formData);
     if (Object.keys(errors).length === 0) {
       // Enviar el formulario si no hay errores
       // Aquí iría la lógica para enviar los datos al servidor, por ejemplo:
       try {
-        const response = await axios.post(`${back_url}/agregaLibro`, formData);
+        const response = await axios.post(`${urlBack}/agregaLibro`, formData, {
+          headers: { Authorization: dataUser.accessToken },
+        });
         console.log("Formulario enviado:", formData);
       } catch (error) {
         console.log(error.message);
-        alert("Error al enviar el formulario");
+        alert("Error al eagregar libro");
       }
       // Luego cerramos el modal
       dispatch(obtener_Todos_Libros());

@@ -3,14 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import "./Detail.css";
-import NavBar from "../navbar/navbar.jsx";
+
 import { useDispatch, useSelector } from "react-redux";
 import { agregaCarrito, urlBack } from "../../redux/actions/actions.js";
 import MensajeAgregado from "./MensajeAgregadoCarrito/Mensaje.jsx";
+import NavBar from "../Navbar/Navbar";
 
 function Detail() {
   const dispatch = useDispatch();
   const [libro, setLibro] = useState({});
+  const user = useSelector((state) => state.user);
   const carrito = useSelector((state) => state.carrito);
   let { idl } = useParams();
   const navigate = useNavigate();
@@ -73,12 +75,41 @@ function Detail() {
           <h3 className="autor">Autor: {libro.autor?.nombreautor}</h3>
           <h3 className="precio">Precio: $ {libro.preciolibro}</h3>
           <h3 className="stock">Disp Stock: {libro.displibro}</h3>
+          {user?
+          ((user.tipoUsuario.rol === 'admin' || libro.displibro <= 0)?
           <button
             className="agregar-carrito-btn"
             onClick={() => handleSubmit()}
+            disabled
+          >
+            No disponible
+          </button>
+          
+          : 
+            <button
+            className="agregar-carrito-btn"
+            onClick={() => handleSubmit()}
+          
           >
             Agregar a carrito
-          </button>
+          </button>):(
+          (libro.displibro <= 0)?
+           <button
+           className="agregar-carrito-btn"
+           onClick={() => handleSubmit()}
+         disabled
+         >
+           No disponible
+         </button>:
+         
+         <button
+           className="agregar-carrito-btn"
+           onClick={() => handleSubmit()}
+         
+         >
+           Agregar a carrito
+         </button>
+         ) }
         </div>
         <img className="img" src={libro.fotolibro} alt="" />
       </div>

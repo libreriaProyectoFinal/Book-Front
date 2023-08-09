@@ -73,7 +73,7 @@ const VentasComponent = () => {
                 <tr key={venta.id}>
                   <td>{format(new Date(venta.fechahoraoc), 'yyyy-MM-dd HH:mm:ss')}</td>
                   <td>{venta.estadooc}</td>
-                  <td>{venta.usuario.name}</td>
+                  <td>{venta.usuario?.name}</td>
                   <td>{venta.nombresLibros.join(', ')}</td>
                   <td>{venta.totalCant}</td>
                   <td>{venta.valortotaloc}</td>

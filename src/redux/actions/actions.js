@@ -4,10 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { json, useNavigate } from 'react-router-dom';
 
 import axios from "axios";
-// export const urlBack = 'http://localhost:3001';
+export const urlBack = 'http://localhost:3001';
 // const urlBack = "http://190.100.208.178:3001";
 // const urlBack = "https://book-front-mu.vercel.app/"
-export const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" // acuerdense que esta llamando el BACK-DEPLOY
+// export const urlBack = "https://book-back-libreriaproyectofinal.vercel.app" // acuerdense que esta llamando el BACK-DEPLOY
 
 
 export const obtener_Todos_Libros = (pagina, limite) => { 
@@ -117,22 +117,6 @@ export const obtenerGeneros = () => {
 
 
 
-export const eliminaLibro = (idlibro) => {
- return async (dispatch) => {      
-    console.log('idlibro:',idlibro)
-         const  response  = await axios.delete(urlBack+`/borradoLibro/${idlibro}`);
-         let data = response.data;
-         console.log('Eliminar: ', data, ' .');
-         if (data.status === 200) {
-          // Mostrar la alerta con el mensaje
-          alert(`eliminado OK id: ${idlibro} `+ data.message);
-         }
-        // return  dispatch({
-        //    type: "ELIMINA_LIBRO",
-        //    payload: data,
-        //  });    
-     };
-};
 
 export const modificaLibro = (idlibro) => {
  return async (dispatch) => {      
@@ -293,6 +277,35 @@ export const editarLibro = (idlibro, dataLibro) => {
     }
   };
 };
+
+export const eliminaLibro = (idlibro) => {
+  const user = localStorage.getItem("user");
+  const dataUser = JSON.parse(user);
+  return async (dispatch) => {      
+     console.log('idlibro:',idlibro)
+     try {
+      
+       const  response  = await axios.delete(urlBack+`/borradoLibro/${idlibro}`, { headers: { Authorization: dataUser.accessToken } });
+       let data = response.data;
+       console.log('Eliminar: ', data, ' .');
+       if (data.status === 200) {
+        // Mostrar la alerta con el mensaje
+        alert(`eliminado OK id: ${idlibro} `+ data.message);
+       }
+     } catch (error) {
+       if (error.response && error.response.status === 401){
+         alert(error.response.data.error);
+       }else {
+        console.log(error)
+       }
+     }
+         // return  dispatch({
+         //    type: "ELIMINA_LIBRO",
+         //    payload: data,
+         //  });    
+      };
+ };
+ 
 
 /*
   librosPorPagina: 4

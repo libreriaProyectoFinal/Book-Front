@@ -4,6 +4,7 @@ import axios from "axios";
 import Modal from "react-modal";
 import s from "./Total.module.css";
 import { urlBack, limpiarCarrito,reinicia_store } from '../../../redux/actions/actions.js'; 
+import { useNavigate } from "react-router-dom";
 //import { getAllCategorias, getAllProducts } from '../../../redux/actions/actions';
 //const urlBack = 'http://localhost:3001';
 //const urlBack = 'https://commerce-back-2025.up.railway.app';
@@ -11,22 +12,24 @@ import { urlBack, limpiarCarrito,reinicia_store } from '../../../redux/actions/a
 
 Modal.setAppElement("#root");
 
-export function showMessage(message, url) {
- const link = <a href={url}>{url}</a>;
- alert(
-   <div>
-     <p>{message}</p>
-     {link}
-   </div>
- );
-}
 export default function Total({ productos, sumatotal }) {
 
+
  const dispatch = useDispatch();
+ const navigate  =useNavigate()
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [redirectUrl, setRedirectUrl] = useState("");
+
 
       const handleCompra = async () => {
         const user = localStorage.getItem("user");
         const dataUser = JSON.parse(user);
+        if (!dataUser) {
+   
+          setRedirectUrl("/login");
+          setModalIsOpen(true);
+          return;
+        }
     
         const loginuser = dataUser.user.email;
         const hashvalidacionpago = "AUN_NO";
@@ -64,7 +67,15 @@ export default function Total({ productos, sumatotal }) {
   // dispatch(limpiarCarrito());
   
  }
+ const closeModal = () => {
+  setModalIsOpen(false);
+};
 
+ const handleRedirect = () => {
+  if (redirectUrl) {
+    navigate(redirectUrl)
+  }
+};
 
   return (
     <div className={s.fondo}>
@@ -79,6 +90,17 @@ export default function Total({ productos, sumatotal }) {
       <button className={s.button} onClick={handleCompra}>
         <span>Comprar</span>
       </button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Redirección"
+        className={s.modalContent}
+        overlayClassName={s.modalOverlay}
+      >
+        <p>Debes iniciar sesión para poder comprar.</p>
+        <button onClick={handleRedirect}>Iniciar sesión</button>
+        <button onClick={() => navigate("/home")}>Ir a Inicio</button>
+      </Modal>
      
     </div>
   );

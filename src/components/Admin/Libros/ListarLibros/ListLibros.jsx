@@ -3,7 +3,7 @@ import axios from "axios";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./ListLibros.css";
 import { useDispatch } from "react-redux";
-import { obtener_Todos_Libros } from "../../../../redux/actions/actions";
+import { editarLibro, eliminaLibro, obtener_Todos_Libros } from "../../../../redux/actions/actions";
 
 const LibroList = ({ libro, borrarLibro }) => {
 
@@ -32,9 +32,9 @@ const generos = [
     nombrelibro: libro.nombrelibro,
     desclibro: libro.desclibro,
     obslibro:libro.obslibro,
-    nombregenero: libro.nombregenero,
+    nombregenero: libro.genero.nombregenero,
     preciolibro: libro.preciolibro,
-    nombreautor: libro.nombreautor,
+    nombreautor: libro.autor.nombreautor,
     fotolibro: existingImageUrl,
     displibro: libro.displibro,
   });
@@ -123,20 +123,24 @@ const generos = [
     e.preventDefault();
 
     try {
-      console.log(formData);
-      const response = await axios.patch(
-        `http://localhost:3001/actualizarLibro/${libro.idlibro}`,
-        formData
-      );
+     
+
+      dispatch(editarLibro(libro.id , formData))
 
       handleCloseModal();
-      dispatch(obtener_Todos_Libros());
-      console.log("Libro actualizado:", response.data);
+      dispatch(obtener_Todos_Libros())
     } catch (error) {
       console.error("Error al actualizar el libro:", error);
     }
   };
 
+  const handleBorrarLibro = async (libroId) => {
+    try {
+    dispatch(eliminaLibro(libroId))
+    } catch (error) {
+      console.error("Error al borrar el libro:", error);
+    }
+  };
   return (
     <>
      
@@ -161,7 +165,7 @@ const generos = [
               <div className="botones_acciones_table">
                 <button
                   className="btn btn-danger me-2 "
-                  onClick={() => borrarLibro(libro.idlibro)}
+                  onClick={() =>handleBorrarLibro(libro.id)}
                 >
                   Borrar
                 </button>
