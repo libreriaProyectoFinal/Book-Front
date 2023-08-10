@@ -13,23 +13,23 @@ import './Footer.css';
   // ---------------------------^^crear un component^^---------
   const handlerDireccionContacto = () => {
     const url = 'https://chat.whatsapp.com/IBQNBZ3lquIDqBSfcGYHy4';
-    window.location.href = url;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
   const handlerDireccionAyuda = () => {
     const url = 'https://chat.whatsapp.com/IBQNBZ3lquIDqBSfcGYHy4';
-    window.location.href = url;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
   const handlerDireccionFacebook = () => {
     const url = 'https://www.facebook.com/';
-    window.location.href = url;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
   const handlerDireccionTwitter = () => {
     const url = 'https://twitter.com/?lang=es';
-    window.location.href = url;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
   const handlerDireccionInstagram = () => {
     const url = 'https://www.instagram.com/';
-    window.location.href = url;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
 function Footer() {
@@ -49,7 +49,7 @@ function Footer() {
              <a href="#"onClick={handlerDireccionContacto}>Contacto</a>              
              </li>
               <li>
-                <a href="/privacidad">Política de privacidad</a>
+              <a href="/Privacidad.html">Política de privacidad</a>
               </li>
             </ul>
           </div>
@@ -62,7 +62,7 @@ function Footer() {
                 <a href="#"onClick={handlerDireccionAyuda}>Ayuda y soporte</a>
               </li>
               <li>
-                <a href="#">Envíos y devoluciones</a>
+              <a href="#"onClick={handlerDireccionAyuda}>Envíos y devoluciones</a>
               </li>
             </ul>
           </div>

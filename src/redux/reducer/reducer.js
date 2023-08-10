@@ -3,13 +3,16 @@ import * as types from '../actions/types';
 const initialState = {
     flagNav: "0",
     generonav: "all",
+    autornav: "all",
     titulonav: "todo",
     loggedUser:"claudiodavid339@gmail.com",
     libros: [],
     librosGenero:[],
+    librosAutor:[],
     librosOriginal: [],
     libro: {},
     generos:[],
+    autores: [],
     details: [],
     carrito:[],
     LibroActualizado: {},
@@ -55,6 +58,20 @@ const rootReducer = (state = initialState,{ type, payload }) => {
            ...state,
            generos: payload,      
          }
+
+         case "LIBROS_AUTOR": 
+         return {
+             ...state,
+             libros: payload,
+             librosOriginal: payload
+         }
+
+     case "OBTIENE_AUTORES": 
+         return {
+             ...state,
+             autores: payload,
+         }
+
 
        case "LIBROS_TITULO":
         return {
@@ -146,6 +163,13 @@ const rootReducer = (state = initialState,{ type, payload }) => {
                 ...state,
                 titulonav: payload,
               };
+
+              case 'CAMBIAR_AUTOR':
+                return {
+                    ...state,
+                    autorSeleccionado: payload,
+                };
+
             /**
              *     case GET_DETAIL:
       return {

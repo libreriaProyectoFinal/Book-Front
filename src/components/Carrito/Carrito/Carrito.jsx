@@ -79,6 +79,7 @@ const Carrito = () => {
     </div>
     <div></div>
   </div>
+  
   </>
 );
 };

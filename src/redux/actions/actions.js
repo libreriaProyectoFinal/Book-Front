@@ -76,6 +76,31 @@ export const librosPorTitulo = (pagina, titulo, limite) => {
 };
 
 
+export const librosAutor = (pagina, autor, limite) => {
+  return (dispatch) => {      
+    console.log('autor:', autor);
+    try {
+      axios.get(urlBack + `/obtenerLibrosPorAutor?pagina=${pagina}&autor=${autor}&limite=${limite}`)
+        .then((response) => {
+          dispatch({
+            type: "LIBROS_AUTOR",
+            payload: {
+              paginaActual: response.data.paginaActual, 
+              librosPorPagina: response.data.limitePagina,
+              totalLibros: response.data.totalLibros, 
+              totalPaginas: response.data.totalPaginas,
+              libros: response.data.libros, 
+            }
+          });
+        });
+    } catch(error) {
+      console.error('Error al listar libros: ', error);
+      toast.error('Error al listar libros.', { position: toast.POSITION.TOP_RIGHT });
+    }
+  };
+};
+
+
 export const agregarLibro = (librodata) => {
   const user = localStorage.getItem("user");
   const dataUser = JSON.parse(user);
@@ -115,6 +140,18 @@ export const obtenerGeneros = () => {
      };
 };
 
+export const obtenerAutores = () => {
+  return async (dispatch) => {
+    const response = await axios.get(urlBack + '/obtenerAutores'); 
+    const data = response.data;
+    console.log('data autores: ', data, ' .');
+    
+    return dispatch({
+      type: "OBTIENE_AUTORES",
+      payload: data,
+    });
+  };
+};
 
 
 
@@ -199,6 +236,15 @@ export const elTitulo = (nuevoValor) => {
      payload: nuevoValor,
    });
  };
+};
+
+export const elAutor = (nuevoValor) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'CAMBIAR_AUTOR',
+      payload: nuevoValor,
+    });
+  };
 };
 
 

@@ -23,6 +23,7 @@ import UsuarioPerfilPagina from './components/perfil/perfil';
 import ComprasUsuario from './components/Compras/Compras';
 import Success from './components/Carrito/Success/Success';
 import Failure from './components/Carrito/Failure/Failure';
+import Reviews from './components/Reviews/Reviews';
 
 
 document.title = "Book Club";
@@ -83,7 +84,7 @@ function App() {
         <Route path="/book/:id" element={<h1>Get by Id</h1>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/createbook" element={<h1>Add</h1>} />
-        <Route path="/about" element={<h1>About</h1>} />
+        <Route path="/aboutus" element={<AboutUs/>} />
         <Route path="/detail/:idl"  element={<Detail />} />
         <Route path="/agregalibro" element={<AgregaLibro />} />
         <Route path="/carrito" element={<Carrito />} />
@@ -92,7 +93,7 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/failure" element={<Failure />} />
         <Route path="/comprasusuario/:idusuario" element={<ComprasUsuario /> } />
-        {/* <Route path="/editalibro/:idl"  element={<EditaLibro />} /> */}
+        <Route path="/Reviews/:idl"  element={<Reviews />} />
         <Route path="/*" element={<NotFoundPage/>} />
         <Route path="/privacidad" element={<Privacidad/>} />
       </Routes>

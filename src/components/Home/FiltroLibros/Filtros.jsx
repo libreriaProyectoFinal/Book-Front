@@ -9,6 +9,7 @@ import {
   cambiarFlagNav,
   elGenero,
   elTitulo,
+  elAutor,
 } from "../../../redux/actions/actions";
 
 //const urlBack = 'http://localhost:3001';
@@ -20,8 +21,18 @@ const Filtros = () => {
   
 
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [buscaTitulo, setBuscaTitulo] = useState("");
   const generos = useSelector((state) => state.generos);
+  const autores = useSelector((state) => state.autores);
+  const [initialGenre, setInitialGenre] = useState("");
+  const [initialAuthor, setInitialAuthor] = useState("");
+
+  useEffect(() => {
+    setInitialGenre(selectedGenre || ""); 
+    setInitialAuthor(selectedAuthor || ""); 
+  }, [selectedGenre, selectedAuthor]);
+
 
   const cambiarFlag1 = (numchar) => {
     dispatch(cambiarFlagNav(numchar));
@@ -33,6 +44,10 @@ const Filtros = () => {
 
   const cambiarTitulo = (param) => {
     dispatch(elTitulo(param));
+  };
+
+  const cambiarAutor = (param) => {
+    dispatch(elAutor(param));
   };
 
   const searchBooksByTitle = (buscaTitulo) => {
@@ -47,11 +62,27 @@ const Filtros = () => {
     navigate("/home");
   };
 
+  const fetchBooksByAuthor = (nombreautor) => {
+    cambiarFlag1("1");
+    cambiarAutor(nombreautor); 
+    navigate("/home");
+  };
+
   const navigateToHome = () => {
     cambiarFlag1("0");
     cambiarGenero("all");
     navigate("/home");
     //   window.location.reload(); // Recargar la página
+  };
+
+  const resetFilters = () => {
+    setSelectedGenre(initialGenre);
+    setSelectedAuthor(initialAuthor); 
+    setBuscaTitulo("");
+    cambiarGenero("all");
+    cambiarAutor("all");
+    cambiarTitulo("");
+    navigateToHome();
   };
 
   return (
@@ -88,6 +119,29 @@ const Filtros = () => {
             ))}
           </select>
         </div>
+
+        <div className="Filtro">
+          <select
+            className="form-select"
+            onChange={(e) => {
+              fetchBooksByAuthor(e.target.value);
+              setSelectedAuthor(e.target.value); 
+            }}
+            value={selectedAuthor || ""}
+          >
+            <option value="">Selecciona un autor</option>
+            {autores && autores.map((autor) => (
+              <option value={autor.nombreautor} key={autor.idautor}>
+                {autor.nombreautor}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <button className="btn btn-secondary ms-3" onClick={resetFilters}>
+          Limpiar
+        </button>
+        
       </div>
     </nav>
   );
