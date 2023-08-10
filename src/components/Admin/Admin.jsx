@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LibroList from "./Libros/ListarLibros/ListLibros";
 import { useDispatch, useSelector } from "react-redux";
-import NavBar from "../Navbar/Navbar";
+import NavBar from "../navbar/navbar";
 import "./Admin.css";
 
 import AdminLibros from "./Libros/Libros";

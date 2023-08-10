@@ -8,7 +8,7 @@ import { obtener_Todos_Libros , librosGenero, librosPorTitulo} from '../../redux
 import Footer from './../Footer/Footer';
 import Filtros from './FiltroLibros/Filtros';
 import Cardsw from '../Cards/Cardsw';
-import NavBar from '../Navbar/Navbar';
+import NavBar from '../navbar/navbar';
 // import NavBar from '../navbar/navbar';
 
 const Home = () => {

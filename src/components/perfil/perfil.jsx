@@ -6,7 +6,7 @@ import axios from 'axios';
 import UsuarioPerfil from './UsuarioPerfil/UsuarioPerfil';
 
 import styles from './perfil.module.css'; 
-import NavBar from '../Navbar/Navbar';
+import NavBar from '../navbar/navbar';
 const UsuarioPerfilPagina = () => {
   const { id } = useParams();
   const [userPerfil, setUserPerfil] = useState(null);
