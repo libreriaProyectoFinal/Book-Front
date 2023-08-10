@@ -45,6 +45,11 @@ const NavBar = () => {
     loadUserFromLocalStorage();
   }, []);
 
+  const handlerDireccionContacto = () => {
+    const url = 'https://chat.whatsapp.com/IBQNBZ3lquIDqBSfcGYHy4';
+    window.location.href = url;
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -76,7 +81,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contacto">
+              <Link className="nav-link" to="/contacto" onClick={handlerDireccionContacto}>
                 Contacto
               </Link>
             </li>
