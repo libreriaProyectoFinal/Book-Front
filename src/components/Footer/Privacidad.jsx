@@ -2,7 +2,7 @@ import React from 'react';
 
 import Footer from '../Footer/Footer';
 import styles from "./Privacidad.css";
-import NavBar from '../Navbar/Navbar';
+import NavBar from '../navbar/navbar';
 
 const Privacidad = () => {
     return (

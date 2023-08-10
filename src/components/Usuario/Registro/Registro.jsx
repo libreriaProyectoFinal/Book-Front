@@ -6,7 +6,7 @@ import styles from './Registro.module.css';
 import axios from "axios";
 import { urlBack } from "../../../redux/actions/actions";
 import Footer from '../../Footer/Footer';
-import NavBar from "../../Navbar/Navbar";
+import NavBar from "../../navbar/navbar";
 
 const RegisterForm = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false); // Estado para controlar la ventana modal de registro exitoso
