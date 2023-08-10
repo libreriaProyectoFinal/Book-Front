@@ -81,8 +81,8 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contacto" onClick={handlerDireccionContacto}>
-                Contacto
+              <Link className="nav-link" onClick={handlerDireccionContacto}>
+                Whatsapp
               </Link>
             </li>
             {/* <li className="nav-item">
